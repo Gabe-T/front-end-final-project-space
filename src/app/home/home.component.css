@@ -16,3 +16,34 @@
   min-width: 50%;
   min-height: 50%;
 }
+
+.arrows {
+  height: 25px;
+  width: 25px;
+}
+
+.arrows:hover {
+}
+
+.left {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 50%;
+}
+
+.right {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  top: 50%;
+}
+
+.bottom {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  transform: rotate(90deg);
+  left: 50%;
+  right: 50%;
+}
