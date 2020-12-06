@@ -1,7 +1,7 @@
 <div class="image-container">
   <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
   <div class="text">
-      <p>{{ apod?.explanation }}</p>
+    <p>{{ apod?.explanation }}</p>
   </div>
 </div>
 <div class="arrow-container">
@@ -17,22 +17,20 @@
     data="./assets/right-arrows.svg"
     alt=""
   ></object>
-  <object
+  <!-- <object
     class="bottom arrows"
     type="image/svg+xml"
     data="./assets/left-arrows.svg"
     alt=""
-  ></object>
+  ></object> -->
 </div>
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened"> 
-    <mat-sidenav-content>
-      <button class="sidenav-button" (click)="sidenav.toggle()">Toggle</button>
-      <app-synth>
-
-      </app-synth>
-    </mat-sidenav-content>
-  </mat-sidenav>
-</mat-sidenav-container>
-
-
+<mat-accordion> </mat-accordion>
+<mat-expansion-panel class="panel">
+  <mat-expansion-panel-header>
+    <mat-panel-title> Synth Component Expander </mat-panel-title>
+    <mat-panel-description>
+      This can contain a logo for the app, name of the synth, etc
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <app-synth></app-synth>
+</mat-expansion-panel>
