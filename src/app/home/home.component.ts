@@ -9,6 +9,7 @@ import { SpaceService } from '../space.service';
 })
 export class HomeComponent implements OnInit {
   apod: any;
+  opened = false;
   constructor(private service: SpaceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
