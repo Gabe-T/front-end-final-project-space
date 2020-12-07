@@ -26,13 +26,13 @@ export class HomeComponent implements OnInit {
         this.currentSentence = this.sentenceArray[this.counter];
         console.log(this.currentSentence);
       } else {
-        this.counter++;
         this.currentSentence = this.sentenceArray[this.counter];
+        this.counter++;
         console.log(this.currentSentence);
+        console.log(this.counter);
       }
-
       this.timeout();
-    }, 10000);
+    }, 1000);
   };
 
   getApod = () => {

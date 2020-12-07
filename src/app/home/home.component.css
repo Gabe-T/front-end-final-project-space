@@ -72,6 +72,9 @@
   background-color: white;
 }
 
+.hide {
+  display: none;
+}
 /* 
 .sidenav-container {
   height: 100%;

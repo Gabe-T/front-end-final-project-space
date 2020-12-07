@@ -1,9 +1,9 @@
 <div class="image-container">
   <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
   <div class="text">
-    <p>{{ apod?.title }}</p>
-    <p>{{ apod?.date }}</p>
-    <p>{{ apod?.explanation }}</p>
+    <p [ngClass]="{hide:counter>0}">{{ apod?.title }}</p>
+    <p [ngClass]="{hide:counter>0}">{{ apod?.date }}</p>
+    <p>{{ currentSentence }}</p>
   </div>
 </div>
 <div class="arrow-container">
