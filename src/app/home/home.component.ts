@@ -16,7 +16,29 @@ export class HomeComponent implements OnInit {
     this.service.getApod().subscribe((response)=>{
       this.apod = response;
       console.log(this.apod);
+      this.splitExplanation(this.apod.explanation);
     }); 
   }
+
+  splitExplanation = (p:string) =>{
+    let apodExp = p;
+    let expSplit = apodExp.match(/[^\.]+[\.]+/g)
+    console.log(expSplit);
+    return expSplit;
+    //we started this code block to append shorter sentences with previous phrase.
+    // (/[^\.!\?]+[\.!\?]+/g)
+    // for(let i=0; i< expSplit.length; i++){
+    //   if (expSplit[i].length<20){
+    //    console.log(expSplit[i])
+    //    return expSplit[i] + expSplit[i-1] 
+    //   }
+    //   console.log(expSplit);
+    // }
+  }
+
+  // presentExplanation = (array:[])=>{
+
+  // }
+
 
 }
