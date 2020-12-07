@@ -59,8 +59,32 @@
   left: 50%;
 }
 
+.panel {
+  z-index: 4;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: transparent;
+  transition: all 1s;
+}
+
+.panel:hover {
+  background-color: white;
+}
+
+/* 
 .sidenav-container {
   height: 100%;
+}
+
+mat-sidenav,
+mat-sidenav-content {
+  padding: 16px;
+}
+
+mat-sidenav {
+  background-color: white;
+  width: 200px;
 }
 
 .sidenav-button {
@@ -68,4 +92,4 @@
   position: absolute;
   left: 0;
   top: 25%;
-}
+} */
