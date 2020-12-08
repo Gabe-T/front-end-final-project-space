@@ -49,16 +49,6 @@
   right: 50%;
 }
 
-.text {
-  width: 40%;
-  color: white;
-  background-color: rgba(128, 128, 128, 0.418);
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-}
-
 .panel {
   z-index: 4;
   width: 100%;
@@ -95,4 +85,114 @@ mat-sidenav {
   position: absolute;
   left: 0;
   top: 25%;
+} */
+
+.pos1 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  z-index: 3;
+}
+
+.pos2 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 33%;
+  left: 57%;
+  z-index: 3;
+}
+
+.pos3 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 27%;
+  left: 48%;
+  z-index: 3;
+}
+
+.pos4 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 33%;
+  left: 35%;
+  z-index: 3;
+}
+
+.pos5 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 26%;
+  left: 36%;
+  z-index: 3;
+}
+
+.pos6 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 33%;
+  left: 44%;
+  z-index: 3;
+}
+
+.pos7 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 27%;
+  left: 59%;
+  z-index: 3;
+}
+
+.pos8 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 31%;
+  left: 40%;
+  z-index: 3;
+}
+
+.pos9 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 33%;
+  left: 32%;
+  z-index: 3;
+}
+
+.pos10 {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  top: 26%;
+  left: 39%;
+  z-index: 3;
+}
+
+/* .text {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
 } */
