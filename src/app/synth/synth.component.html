@@ -21,11 +21,10 @@
   ></mat-slider>
   <p>osc 2 pitch</p>
   <mat-slider
-    (input)="slider3Value = getSliderValue($event.value)"
+    (input)="slider3Value = $event.value"
     [value]="slider3Value"
-    min="1"
+    min=".01"
     max="20"
-    step="1"
     thumbLabel
     tickInterval="10"
   ></mat-slider>

@@ -17,7 +17,7 @@ export class SynthComponent implements OnInit {
   reverb:any;
   slider1Value:number = 100;
   slider2Value:number = 200;
-  slider3Value:number = 0.01
+  slider3Value:number = 0.01;
   constructor() {
     this.synth1 = new Tone.Synth();
     this.synth2 = new Tone.Synth();
@@ -29,7 +29,7 @@ export class SynthComponent implements OnInit {
     });
     this.reverb = new Tone.Reverb({
       wet: .75,
-      decay: this.slider1Value,
+      decay: this.slider3Value,
     })
     //mix buss
     this.synth1.connect(this.mixer);
