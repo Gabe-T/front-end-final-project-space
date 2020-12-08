@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   sentenceArray: string[];
   counter: number = 0;
   opened = false;
+  random: number = 1;
   constructor(private service: SpaceService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -23,16 +24,17 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       if (this.counter === this.sentenceArray.length) {
         this.counter = 0;
+        this.randomNum();
         this.currentSentence = this.sentenceArray[this.counter];
-        console.log(this.currentSentence);
+        console.log(this.random);
       } else {
         this.currentSentence = this.sentenceArray[this.counter];
         this.counter++;
-        console.log(this.currentSentence);
-        console.log(this.counter);
+        this.randomNum();
+        console.log(this.random);
       }
       this.timeout();
-    }, 1000);
+    }, 10000);
   };
 
   getApod = () => {
@@ -50,4 +52,17 @@ export class HomeComponent implements OnInit {
     console.log(expSplit);
     this.sentenceArray = expSplit;
   };
+
+  randomNum = () => {
+    let lastRand = this.random;
+    let number = Math.floor(Math.random()*11);
+    if(lastRand === number || number === 0){
+      number++;
+      this.random = number;
+    }else{
+      this.random = number;
+    }
+  };
+
 }
+
