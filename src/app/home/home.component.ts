@@ -1,11 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpaceService } from '../space.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('fadeinandout', [
+      state(
+        'in',
+        style({
+          opacity: 1,
+        })
+      ),
+      state(
+        'out',
+        style({
+          opacity: 0,
+        })
+      ),
+      transition('in => out', [animate('5s')]),
+      transition('out => in', [animate('5s')]),
+    ]),
+  ],
 })
 export class HomeComponent implements OnInit {
   apod: any;
@@ -14,6 +39,7 @@ export class HomeComponent implements OnInit {
   counter: number = 0;
   opened = false;
   random: number = 1;
+  fade: boolean = false;
   constructor(private service: SpaceService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -26,15 +52,20 @@ export class HomeComponent implements OnInit {
         this.counter = 0;
         this.randomNum();
         this.currentSentence = this.sentenceArray[this.counter];
-        console.log(this.random);
       } else {
         this.currentSentence = this.sentenceArray[this.counter];
         this.counter++;
         this.randomNum();
-        console.log(this.random);
       }
       this.timeout();
     }, 10000);
+  };
+
+  fadeTimer = () => {
+    setTimeout(() => {
+      this.toggleFade();
+      this.fadeTimer();
+    }, 5000);
   };
 
   getApod = () => {
@@ -42,6 +73,8 @@ export class HomeComponent implements OnInit {
       this.apod = response;
       this.splitExplanation(this.apod.explanation);
       this.timeout();
+      this.toggleFade();
+      this.fadeTimer();
       console.log(this.apod);
     });
   };
@@ -55,14 +88,16 @@ export class HomeComponent implements OnInit {
 
   randomNum = () => {
     let lastRand = this.random;
-    let number = Math.floor(Math.random()*11);
-    if(lastRand === number || number === 0){
+    let number = Math.floor(Math.random() * 11);
+    if (lastRand === number || number === 0) {
       number++;
       this.random = number;
-    }else{
+    } else {
       this.random = number;
     }
   };
 
+  toggleFade = () => {
+    this.fade = !this.fade;
+  };
 }
-
