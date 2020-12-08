@@ -1,3 +1,33 @@
 <div class="synth-container">
   <button (mousedown)="msdown = true; play()">press!</button>
+  <mat-slider
+    (input)="slider1Value = $event.value"
+    [value]="slider1Value"
+    min="100"
+    max="150"
+    step="1"
+    thumbLabel
+    tickInterval="5"
+  ></mat-slider>
+  <p>osc 1 pitch</p>
+  <mat-slider
+    (input)="slider2Value = $event.value"
+    [value]="slider2Value"
+    min="200"
+    max="1000"
+    step="1"
+    thumbLabel
+    tickInterval="5"
+  ></mat-slider>
+  <p>osc 2 pitch</p>
+  <mat-slider
+    (input)="slider3Value = getSliderValue($event.value)"
+    [value]="slider3Value"
+    min="1"
+    max="20"
+    step="1"
+    thumbLabel
+    tickInterval="10"
+  ></mat-slider>
+  <p>reverb decay</p>
 </div>
