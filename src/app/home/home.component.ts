@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit {
 
   randomNum = () => {
     let lastRand = this.random;
-    let number = Math.floor(Math.random() * 11);
+    let number = Math.floor(Math.random() * 12);
     if (lastRand === number || number === 0) {
       number++;
       this.random = number;
