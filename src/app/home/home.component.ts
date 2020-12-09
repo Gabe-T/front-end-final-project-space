@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SpaceService } from '../space.service';
 import {
   trigger,
@@ -40,11 +40,17 @@ export class HomeComponent implements OnInit {
   opened = false;
   random: number = 1;
   fade: boolean = false;
-  year:number;
-  month:number;
-  day:number;
+  year: number;
+  month: number;
+  day: number;
+  currentDate: string = '';
+  previousDay: string;
 
-  constructor(private service: SpaceService, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private service: SpaceService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getApod();
@@ -73,29 +79,32 @@ export class HomeComponent implements OnInit {
   };
 
   getApod = () => {
-    this.route.queryParamMap.subscribe((response)=>{
+    this.route.queryParamMap.subscribe((response) => {
       const queryParams = response;
-      if(queryParams.get("date")=== null){
+      if (queryParams.get('date') === null) {
         this.service.getApod().subscribe((response) => {
           this.apod = response;
+          this.currentDate = this.apod.date;
           this.splitExplanation(this.apod.explanation);
           this.timeout();
           this.toggleFade();
           this.fadeTimer();
           console.log(this.apod);
         });
-      }else{
-        this.service.getRandomDate(queryParams.get('date')).subscribe((response)=>{
-          this.apod = response;
-          this.splitExplanation(this.apod.explanation);
-          this.timeout();
-          this.toggleFade();
-          this.fadeTimer();
-          console.log(this.apod);
-        });
+      } else {
+        this.service
+          .getRandomDate(queryParams.get('date'))
+          .subscribe((response) => {
+            this.apod = response;
+            this.splitExplanation(this.apod.explanation);
+            this.timeout();
+            this.toggleFade();
+            this.fadeTimer();
+            console.log(this.apod);
+          });
       }
     });
-  }
+  };
   splitExplanation = (p: string) => {
     const apodExp = p;
     const expSplit = apodExp.match(/[^\.]+[\.]+/g);
@@ -118,18 +127,42 @@ export class HomeComponent implements OnInit {
     this.fade = !this.fade;
   };
 
-  randomizeDate = () =>{
-    this.year = Math.floor((Math.random()*6)+1+2014);
-    this.month= Math.floor((Math.random()*12)+1);
-    this.day = Math.floor((Math.random()*28)+1);
-    let randomDate = (this.year +"-"+this.month+"-"+this.day)
+  randomizeDate = () => {
+    this.year = Math.floor(Math.random() * 6 + 1 + 2014);
+    this.month = Math.floor(Math.random() * 12 + 1);
+    this.day = Math.floor(Math.random() * 28 + 1);
+    let randomDate = this.year + '-' + this.month + '-' + this.day;
     return randomDate;
-  }
+  };
 
-  getRandomApod = () =>{
+  getRandomApod = () => {
     let date = this.randomizeDate();
-    this.router.navigate(["/home"],{queryParams:{date:date}})
-    console.log(date);
-  }
+    this.router.navigate(['/home'], { queryParams: { date: date } });
+  };
 
+  backOneDay = (date: string) => {
+    let year = parseInt(date.substring(0, 4));
+    let month = parseInt(date.substring(5, 7));
+    let day = parseInt(date.substring(8, 10)) - 1;
+
+    if (day === 0) {
+      month = month - 1;
+      day = 28;
+      this.previousDay = `${year}-${month}-${day}`;
+
+      if (month === 0) {
+        year = year - 1;
+        month = 12;
+        day = 28;
+        this.previousDay = `${year}-${month}-${day}`;
+      }
+    } else {
+      this.previousDay = `${year}-${month}-${day}`;
+    }
+    this.router.navigate(['/home'], {
+      queryParams: {
+        date: this.previousDay,
+      },
+    });
+  };
 }
