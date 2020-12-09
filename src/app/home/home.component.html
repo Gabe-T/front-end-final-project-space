@@ -2,6 +2,10 @@
 <button class="random-button" (click)="backOneDay(apod.date)">
   backOneDay
 </button>
+<button class="random-button" (click)="forwardOneDay(apod.date)">
+  nextDay
+</button>
+<button class="random-button" (click)="backHome()">today</button>
 <div class="image-container">
   <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
   <img

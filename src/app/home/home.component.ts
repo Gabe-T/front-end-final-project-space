@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
   day: number;
   currentDate: string = '';
   previousDay: string;
+  nextDay: string;
 
   constructor(
     private service: SpaceService,
@@ -163,6 +164,38 @@ export class HomeComponent implements OnInit {
       queryParams: {
         date: this.previousDay,
       },
+
     });
   };
+
+  forwardOneDay = (date: string) => {
+    let year = parseInt(date.substring(0, 4));
+    let month = parseInt(date.substring(5, 7));
+    let day = parseInt(date.substring(8, 10)) + 1;
+
+    if (day === 29) {
+      month = month + 1;
+      day = 1;
+      this.nextDay = `${year}-${month}-${day}`;
+
+      if (month === 13) {
+        year = year + 1;
+        month = 1;
+        day = 1;
+        this.nextDay = `${year}-${month}-${day}`;
+      }
+    } else {
+      this.nextDay = `${year}-${month}-${day}`;
+    }
+    this.router.navigate(['/home'], {
+      queryParams: {
+        date: this.nextDay,
+      },
+    });
+  };
+
+  backHome = () =>{
+    this.router.navigate(['/home']);
+  }
+
 }
