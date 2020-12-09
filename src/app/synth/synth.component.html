@@ -1,33 +1,73 @@
 <div class="synth-container">
-  <button (mousedown)="msdown = true; play()">press!</button>
-  <mat-slider
-    (input)="slider1Value = $event.value"
-    [value]="slider1Value"
-    min="100"
-    max="150"
-    step="1"
-    thumbLabel
-    tickInterval="5"
-  ></mat-slider>
-  <p>osc 1 pitch</p>
-  <mat-slider
-    (input)="slider2Value = $event.value"
-    [value]="slider2Value"
-    min="200"
-    max="1000"
-    step="1"
-    thumbLabel
-    tickInterval="5"
-  ></mat-slider>
-  <p>osc 2 pitch</p>
-  <mat-slider
-    (input)="slider3Value = getSliderValue($event.value)"
-    [value]="slider3Value"
-    min="1"
-    max="20"
-    step="1"
-    thumbLabel
-    tickInterval="10"
-  ></mat-slider>
-  <p>reverb decay</p>
+  <button mat-button (mousedown)="msdown = true; play()">start</button>
+  <button mat-button (mousedown)="msdown = true; stop()">stop</button>
+  <div>
+    <p>osc 1 pitch</p>
+    <mat-slider
+      (input)="getOscSlider($event.value)"
+      [value]="slider1Value"
+      min="100"
+      max="150"
+      step="1"
+      thumbLabel
+      tickInterval="5"
+    ></mat-slider>
+  </div>
+  <div>
+    <p>osc 1 filter lfo</p>
+    <mat-slider
+      (input)="getFilterSlider($event.value)"
+      [value]="slider5Value"
+      units="hz"
+      min="0.1"
+      max="4"
+      step=".001"
+      thumbLabel
+    ></mat-slider>
+  </div>
+  <div>
+    <p>osc 1 level</p>
+    <mat-slider
+      (input)="getAmp1Slider($event.value)"
+      [value]="slider6Value"
+      min="0"
+      max=".8"
+      step=".01"
+      thumbLabel
+    ></mat-slider>
+  </div>
+  <div>
+    <p>osc 2 pitch</p>
+    <mat-slider
+      (input)="slider2Value = $event.value"
+      [value]="slider2Value"
+      min="200"
+      max="400"
+      step=""
+      thumbLabel
+      tickInterval="5"
+    ></mat-slider>
+  </div>
+  <div>
+    <p>reverb decay</p>
+    <mat-slider
+      (input)="getSliderValue($event.value)"
+      [value]="slider3Value"
+      min=".01"
+      max="20"
+      thumbLabel
+      step=".01"
+    ></mat-slider>
+  </div>
+  <div>
+    <p>master volume</p>
+    <mat-slider
+      (input)="getVolSlider($event.value)"
+      [value]="slider4Value"
+      min="-40"
+      max="-12"
+      step=".001"
+      thumbLabel
+    ></mat-slider>
+  </div>
 </div>
