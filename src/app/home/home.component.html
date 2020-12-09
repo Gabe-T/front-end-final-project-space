@@ -1,8 +1,23 @@
 <div class="image-container">
   <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
-  <div class="text">
-    <p [ngClass]="{hide:counter>0}">{{ apod?.title }}</p>
-    <p [ngClass]="{hide:counter>0}">{{ apod?.date }}</p>
+  <div
+    [@fadeinandout]="fade ? 'in' : 'out'"
+    class="text"
+    [ngClass]="{
+      pos1: random === 1,
+      pos2: random === 2,
+      pos3: random === 3,
+      pos4: random === 4,
+      pos5: random === 5,
+      pos6: random === 6,
+      pos7: random === 7,
+      pos8: random === 8,
+      pos9: random === 9,
+      pos10: random === 10
+    }"
+  >
+    <p [ngClass]="{ hide: counter > 0 }">{{ apod?.title }}</p>
+    <p [ngClass]="{ hide: counter > 0 }">{{ apod?.date }}</p>
     <p>{{ currentSentence }}</p>
   </div>
 </div>

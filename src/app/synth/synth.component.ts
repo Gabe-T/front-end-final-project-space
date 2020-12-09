@@ -32,9 +32,11 @@ export class SynthComponent implements OnInit {
   slider1Value:number = 100;
   slider2Value:number = 200;
   slider3Value:number = 0.01;
+
   slider4Value:number = -20;
   slider5Value:number = 2;
   slider6Value:number = .5;
+
 
   constructor() {
     this.synth1 = new Tone.Oscillator(this.slider1Value,"sawtooth");
@@ -49,6 +51,7 @@ export class SynthComponent implements OnInit {
     this.reverb = new Tone.Reverb({
       wet: .75,
       decay: this.slider3Value,
+
     })
     this.autofilter= new Tone.AutoFilter({
       baseFrequency:60,
@@ -56,6 +59,7 @@ export class SynthComponent implements OnInit {
       frequency: .1,
       octaves: 4,
       type:"sine"
+
     })
     this.vol = new Tone.Volume(this.slider4Value);
 

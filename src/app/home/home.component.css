@@ -49,16 +49,6 @@
   right: 50%;
 }
 
-.text {
-  width: 40%;
-  color: white;
-  background-color: rgba(128, 128, 128, 0.418);
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-}
-
 .panel {
   z-index: 4;
   width: 100%;
@@ -75,24 +65,61 @@
 .hide {
   display: none;
 }
-/* 
-.sidenav-container {
-  height: 100%;
-}
 
-mat-sidenav,
-mat-sidenav-content {
-  padding: 16px;
-}
-
-mat-sidenav {
-  background-color: white;
-  width: 200px;
-}
-
-.sidenav-button {
-  z-index: 3;
+.text {
+  width: 15%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.418);
   position: absolute;
-  left: 0;
-  top: 25%;
-} */
+  z-index: 3;
+}
+
+.pos1 {
+  top: 30%;
+  left: 30%;
+}
+
+.pos2 {
+  top: 33%;
+  left: 57%;
+}
+
+.pos3 {
+  top: 27%;
+  left: 48%;
+}
+
+.pos4 {
+  top: 33%;
+  left: 35%;
+}
+
+.pos5 {
+  top: 26%;
+  left: 36%;
+}
+
+.pos6 {
+  top: 33%;
+  left: 44%;
+}
+
+.pos7 {
+  top: 27%;
+  left: 59%;
+}
+
+.pos8 {
+  top: 31%;
+  left: 40%;
+}
+
+.pos9 {
+  top: 33%;
+  left: 32%;
+}
+
+.pos10 {
+  top: 26%;
+  left: 39%;
+}
