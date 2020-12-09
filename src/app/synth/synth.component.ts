@@ -65,7 +65,7 @@ export class SynthComponent implements OnInit {
 
     this.pattern1 = new Tone.Pattern()
 
-    
+  
     this.scale1 = Tonal.Scale.get("C3 major").notes;
     this.scale1 = this.scale1.concat(Tonal.Scale.get("C4 major").notes)
     this.scale1 = this.scale1.concat(Tonal.Scale.get("C5 major").notes)
