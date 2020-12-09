@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { SpaceService } from '../space.service';
 import {
   trigger,
@@ -40,7 +40,11 @@ export class HomeComponent implements OnInit {
   opened = false;
   random: number = 1;
   fade: boolean = false;
-  constructor(private service: SpaceService, private route: ActivatedRoute) {}
+  year:number;
+  month:number;
+  day:number;
+
+  constructor(private service: SpaceService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.getApod();
@@ -69,16 +73,29 @@ export class HomeComponent implements OnInit {
   };
 
   getApod = () => {
-    this.service.getApod().subscribe((response) => {
-      this.apod = response;
-      this.splitExplanation(this.apod.explanation);
-      this.timeout();
-      this.toggleFade();
-      this.fadeTimer();
-      console.log(this.apod);
+    this.route.queryParamMap.subscribe((response)=>{
+      const queryParams = response;
+      if(queryParams.get("date")=== null){
+        this.service.getApod().subscribe((response) => {
+          this.apod = response;
+          this.splitExplanation(this.apod.explanation);
+          this.timeout();
+          this.toggleFade();
+          this.fadeTimer();
+          console.log(this.apod);
+        });
+      }else{
+        this.service.getRandomDate(queryParams.get('date')).subscribe((response)=>{
+          this.apod = response;
+          this.splitExplanation(this.apod.explanation);
+          this.timeout();
+          this.toggleFade();
+          this.fadeTimer();
+          console.log(this.apod);
+        });
+      }
     });
-  };
-
+  }
   splitExplanation = (p: string) => {
     const apodExp = p;
     const expSplit = apodExp.match(/[^\.]+[\.]+/g);
@@ -100,4 +117,19 @@ export class HomeComponent implements OnInit {
   toggleFade = () => {
     this.fade = !this.fade;
   };
+
+  randomizeDate = () =>{
+    this.year = Math.floor((Math.random()*6)+1+2014);
+    this.month= Math.floor((Math.random()*12)+1);
+    this.day = Math.floor((Math.random()*28)+1);
+    let randomDate = (this.year +"-"+this.month+"-"+this.day)
+    return randomDate;
+  }
+
+  getRandomApod = () =>{
+    let date = this.randomizeDate();
+    this.router.navigate(["/home"],{queryParams:{date:date}})
+    console.log(date);
+  }
+
 }

@@ -1,5 +1,10 @@
+<button class="random-button" (click)="getRandomApod()">random date</button>
 <div class="image-container">
-  <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
+  <iframe
+    class="nasa-img"
+    src="{{ apod?.url }}"
+    alt="nasa pic of the day"
+  ></iframe>
   <div
     [@fadeinandout]="fade ? 'in' : 'out'"
     class="text"
