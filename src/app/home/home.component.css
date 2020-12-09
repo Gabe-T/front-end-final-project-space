@@ -87,7 +87,7 @@
 .text {
   width: 15%;
   color: white;
-  font-size: 20px;
+  /* font-size: medium; */
   background-color: rgba(128, 128, 128, 0.199);
   position: absolute;
   z-index: 3;
