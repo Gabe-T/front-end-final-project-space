@@ -110,9 +110,13 @@ export class HomeComponent implements OnInit {
   getSpecificApod = (date: string) => {
     this.service.getRandomDate(date).subscribe((response) => {
       this.apod = response;
-      this.splitExplanation(this.apod.explanation);
-      this.startTimers();
-      console.log(this.apod, this.running, this.fade, this.counter);
+      if(this.apod.media_type !== "image"){
+        this.backOneDay(date);
+      }else{
+        this.splitExplanation(this.apod.explanation);
+        this.startTimers();
+        console.log(this.apod, this.running, this.fade, this.counter);
+      }
     });
   };
 

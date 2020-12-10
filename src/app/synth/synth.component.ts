@@ -59,6 +59,7 @@ export class SynthComponent implements OnInit {
   sliderMasterVolumeValue:number = -20;
   bpmSliderValue:number = 120;
   checked1:boolean;
+
   constructor() {
     Tone.Transport.bpm.value = this.bpmSliderValue;
     this.synth1 = new Tone.Oscillator(this.sliderOsc1PitchValue,"square");
@@ -99,11 +100,7 @@ export class SynthComponent implements OnInit {
 
     Tonal.Collection.shuffle(this.scale1);
 
-    
-
-
-
-       
+  
        
        //MIX BUSS
        //consider using chains!!
