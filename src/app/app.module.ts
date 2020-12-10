@@ -6,6 +6,7 @@ import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatExpansionModule} from '@angular/material/expansion'
 import {MatSliderModule} from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { SynthComponent } from './synth/synth.component';
     MatExpansionModule,
     MatButtonModule,
     MatSliderModule,
+    MatCheckboxModule,
     BrowserAnimationsModule
   ],
   providers: [],

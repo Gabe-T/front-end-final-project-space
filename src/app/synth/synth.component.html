@@ -2,72 +2,170 @@
   <button mat-button (mousedown)="msdown = true; play()">start</button>
   <button mat-button (mousedown)="msdown = true; stop()">stop</button>
   <div>
-    <p>osc 1 pitch</p>
+    <div>
+      <mat-slider
+        (input)="getOscSlider($event.value)"
+        [value]="sliderOsc1PitchValue"
+        min="50"
+        max="100"
+        step="5"
+        thumbLabel
+        tickInterval="5"
+      ></mat-slider>
+      <p>osc 1 pitch</p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="sliderOsc2PitchValue = $event.value"
+        [value]="sliderOsc2PitchValue"
+        min="200"
+        max="400"
+        step="20"
+        thumbLabel
+        tickInterval="5"
+      ></mat-slider>
+      <p>osc 2 pitch</p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="sliderOsc3PitchValue = $event.value"
+        [value]="sliderOsc3PitchValue"
+        min="400"
+        max="800"
+        step="50"
+        thumbLabel
+        tickInterval="5"
+      ></mat-slider>
+      <p>osc 3 pitch</p>
+    </div>
+  </div>
+  <div>
+    <div>
+      <mat-slider
+        (input)="getFilterSlider($event.value)"
+        [value]="sliderOsc1FilterLfoValue"
+        units="hz"
+        min="0.1"
+        max="4"
+        step=".001"
+        thumbLabel
+      ></mat-slider>
+      <p>osc 1 filter lfo</p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getOsc2IntervalSlider($event.value)"
+        [value]="sliderOsc2IntervalValue"
+        min="1"
+        max="8"
+        step="1"
+        thumbLabel
+      ></mat-slider>
+      <p>osc 2 trig interval</p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getOsc3IntervalSlider($event.value)"
+        [value]="sliderOsc3IntervalValue"
+        min="1"
+        max="8"
+        step="1"
+        thumbLabel
+      ></mat-slider>
+      <p>osc 3 trig interval</p>
+    </div>
+  </div>
+  <div>
+    <div>
+      <mat-slider
+        (input)="getAmp1Slider($event.value)"
+        [value]="sliderOsc1LevelValue"
+        min="0"
+        max=".8"
+        step=".01"
+        thumbLabel
+      ></mat-slider>
+      <p>osc 1 level</p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getAmp2Slider($event.value)"
+        [value]="sliderOsc2LevelValue"
+        min="0"
+        max=".8"
+        step=".01"
+        thumbLabel
+      ></mat-slider>
+      <p>osc 2 level</p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getAmp3Slider($event.value)"
+        [value]="sliderOsc3LevelValue"
+        min="0"
+        max=".8"
+        step=".01"
+        thumbLabel
+      ></mat-slider>
+      <p>osc 3 level</p>
+    </div>
+  </div>
+  <div>
+    <div>
+      <mat-slider
+        (input)="getReverbLevelValue($event.value)"
+        [value]="sliderReverbLevelValue"
+        min=".01"
+        max="1"
+        thumbLabel
+        step=".01"
+      ></mat-slider>
+      <p>reverb level</p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getDelayLevelValue($event.value)"
+        [value]="sliderDelayLevelValue"
+        min=".1"
+        max="1"
+        thumbLabel
+        step=".1"
+      ></mat-slider>
+      <p>delay level</p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getDelayTimeValue($event.value)"
+        [value]="sliderDelayTimeValue"
+        min=".1"
+        max="1"
+        thumbLabel
+        step=".05"
+      ></mat-slider>
+      <p>delay time divider</p>
+    </div>
+  </div>
+  <div>
     <mat-slider
-      (input)="getOscSlider($event.value)"
-      [value]="slider1Value"
-      min="100"
-      max="150"
+      (input)="getBPMSlider($event.value)"
+      [value]="bpmSliderValue"
+      min="45"
+      max="180"
       step="1"
       thumbLabel
-      tickInterval="5"
     ></mat-slider>
+    <p>bpm</p>
   </div>
   <div>
-    <p>osc 1 filter lfo</p>
     <mat-slider
-      (input)="getFilterSlider($event.value)"
-      [value]="slider5Value"
-      units="hz"
-      min="0.1"
-      max="4"
-      step=".001"
-      thumbLabel
-    ></mat-slider>
-  </div>
-  <div>
-    <p>osc 1 level</p>
-    <mat-slider
-      (input)="getAmp1Slider($event.value)"
-      [value]="slider6Value"
-      min="0"
-      max=".8"
-      step=".01"
-      thumbLabel
-    ></mat-slider>
-  </div>
-  <div>
-    <p>osc 2 pitch</p>
-    <mat-slider
-      (input)="slider2Value = $event.value"
-      [value]="slider2Value"
-      min="200"
-      max="400"
-      step=""
-      thumbLabel
-      tickInterval="5"
-    ></mat-slider>
-  </div>
-  <div>
-    <p>reverb decay</p>
-    <mat-slider
-      (input)="getSliderValue($event.value)"
-      [value]="slider3Value"
-      min=".01"
-      max="20"
-      thumbLabel
-      step=".01"
-    ></mat-slider>
-  </div>
-  <div>
-    <p>master volume</p>
-    <mat-slider
-      (input)="getVolSlider($event.value)"
-      [value]="slider4Value"
+      (input)="getMasterVolSlider($event.value)"
+      [value]="sliderMasterVolumeValue"
       min="-40"
-      max="-12"
-      step=".001"
+      max="-8"
+      step=".1"
+      vertical="true"
       thumbLabel
     ></mat-slider>
+    <p>master volume</p>
   </div>
 </div>
