@@ -46,6 +46,9 @@ export class HomeComponent implements OnInit {
   currentDate: string = '';
   previousDay: string;
   nextDay: string;
+  running: boolean = false;
+  fadeTimer: any;
+  runTimer: any;
 
   constructor(
     private service: SpaceService,
@@ -54,12 +57,30 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getApod();
+    this.route.queryParamMap.subscribe((response) => {
+      const date = response.get('date');
+      if (date) {
+        this.getSpecificApod(date);
+        this.stopTimers();
+        console.log('getSpecificApod');
+      } else {
+        this.getApod();
+        this.stopTimers();
+        console.log('getApod');
+      }
+    });
+    console.log(this.running, this.fade, this.counter);
   }
 
   timeout = () => {
-    setTimeout(() => {
-      if (this.counter === this.sentenceArray.length) {
+    this.runTimer = setTimeout(() => {
+      if (!this.running) {
+        clearTimeout(this.runTimer);
+        this.running = true;
+        this.counter = 0;
+        this.randomNum();
+        this.currentSentence = this.sentenceArray[this.counter];
+      } else if (this.counter === this.sentenceArray.length) {
         this.counter = 0;
         this.randomNum();
         this.currentSentence = this.sentenceArray[this.counter];
@@ -72,38 +93,36 @@ export class HomeComponent implements OnInit {
     }, 10000);
   };
 
-  fadeTimer = () => {
-    setTimeout(() => {
-      this.toggleFade();
-      this.fadeTimer();
+  setFadeTimer = () => {
+    this.fadeTimer = setTimeout(() => {
+      if (!this.running) {
+        clearTimeout(this.fadeTimer);
+        this.running = true;
+        this.toggleFade();
+        this.setFadeTimer();
+      } else {
+        this.toggleFade();
+        this.setFadeTimer();
+      }
     }, 5000);
   };
 
+  getSpecificApod = (date: string) => {
+    this.service.getRandomDate(date).subscribe((response) => {
+      this.apod = response;
+      this.splitExplanation(this.apod.explanation);
+      this.startTimers();
+      console.log(this.apod, this.running, this.fade, this.counter);
+    });
+  };
+
   getApod = () => {
-    this.route.queryParamMap.subscribe((response) => {
-      const queryParams = response;
-      if (queryParams.get('date') === null) {
-        this.service.getApod().subscribe((response) => {
-          this.apod = response;
-          this.currentDate = this.apod.date;
-          this.splitExplanation(this.apod.explanation);
-          this.timeout();
-          this.toggleFade();
-          this.fadeTimer();
-          console.log(this.apod);
-        });
-      } else {
-        this.service
-          .getRandomDate(queryParams.get('date'))
-          .subscribe((response) => {
-            this.apod = response;
-            this.splitExplanation(this.apod.explanation);
-            this.timeout();
-            this.toggleFade();
-            this.fadeTimer();
-            console.log(this.apod);
-          });
-      }
+    this.service.getApod().subscribe((response) => {
+      this.apod = response;
+      this.currentDate = this.apod.date;
+      this.splitExplanation(this.apod.explanation);
+      this.startTimers();
+      console.log(this.apod, this.running, this.fade, this.counter);
     });
   };
   splitExplanation = (p: string) => {
@@ -115,7 +134,7 @@ export class HomeComponent implements OnInit {
 
   randomNum = () => {
     let lastRand = this.random;
-    let number = Math.floor(Math.random() * 11);
+    let number = Math.floor(Math.random() * 12);
     if (lastRand === number || number === 0) {
       number++;
       this.random = number;
@@ -164,7 +183,6 @@ export class HomeComponent implements OnInit {
       queryParams: {
         date: this.previousDay,
       },
-
     });
   };
 
@@ -194,8 +212,21 @@ export class HomeComponent implements OnInit {
     });
   };
 
-  backHome = () =>{
+  backHome = () => {
     this.router.navigate(['/home']);
-  }
+  };
 
+  startTimers = () => {
+    this.timeout();
+    this.toggleFade();
+    this.setFadeTimer();
+  };
+
+  stopTimers = () => {
+    clearTimeout(this.runTimer);
+    clearTimeout(this.fadeTimer);
+    this.running = false;
+    this.fade = false;
+    this.counter = 0;
+  };
 }
