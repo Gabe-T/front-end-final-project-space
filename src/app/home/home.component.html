@@ -30,8 +30,8 @@
       pos10: random === 10
     }"
   >
-    <p [ngClass]="{ hide: counter > 0 }">{{ apod?.title }}</p>
-    <p [ngClass]="{ hide: counter > 0 }">{{ apod?.date }}</p>
+  <p [ngClass]="{ hide: counter > 0 }" class="title-text">{{ apod?.title }}</p>
+  <p [ngClass]="{ hide: counter > 0 }" class="title-text">{{ apod?.date }}</p>
     <p>{{ currentSentence }}</p>
   </div>
 </div>
