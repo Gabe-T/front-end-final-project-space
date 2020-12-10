@@ -1,11 +1,11 @@
-<button class="random-button" (click)="getRandomApod()">random date</button>
-<button class="random-button" (click)="backOneDay(apod.date)">
+<button mat-button class="random-button" (click)="getRandomApod()">random date</button>
+<button mat-button class="random-button" (click)="backOneDay(apod.date)">
   backOneDay
 </button>
-<button class="random-button" (click)="forwardOneDay(apod.date)">
+<button mat-button class="random-button" (click)="forwardOneDay(apod.date)">
   nextDay
 </button>
-<button class="random-button" (click)="backHome()">today</button>
+<button mat-button class="random-button" (click)="backHome()">today</button>
 <div class="image-container">
   <img class="nasa-img" src="{{ apod?.hdurl }}" alt="nasa pic of the day" />
   <img
