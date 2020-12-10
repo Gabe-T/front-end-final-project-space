@@ -7,10 +7,10 @@
 </button>
 <button class="random-button" (click)="backHome()">today</button>
 <div class="image-container">
-  <img class="nasa-img" src="{{ apod?.hdurl }}" alt="nasa pic of the day" />
+  <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
   <img
     class="nasa-overlay-img"
-    src="{{ apod?.hdurl }}"
+    src="{{ apod?.url }}"
     alt="nasa pic of the day"
   />
 
@@ -30,8 +30,10 @@
       pos10: random === 10
     }"
   >
-  <p [ngClass]="{ hide: counter > 0 }" class="title-text">{{ apod?.title }}</p>
-  <p [ngClass]="{ hide: counter > 0 }" class="title-text">{{ apod?.date }}</p>
+    <p [ngClass]="{ hide: counter > 0 }" class="title-text">
+      {{ apod?.title }}
+    </p>
+    <p [ngClass]="{ hide: counter > 0 }" class="title-text">{{ apod?.date }}</p>
     <p>{{ currentSentence }}</p>
   </div>
 </div>
