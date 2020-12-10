@@ -87,57 +87,66 @@
 .text {
   width: 15%;
   color: white;
-  background-color: rgba(128, 128, 128, 0.418);
+  /* font-size: medium; */
+  background-color: rgba(128, 128, 128, 0.199);
   position: absolute;
   z-index: 3;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
 }
 
 .pos1 {
-  top: 30%;
-  left: 30%;
+  top: 15%;
+  left: 7%;
 }
 
 .pos2 {
-  top: 33%;
-  left: 57%;
+  top: 15%;
+  left: 30%;
 }
 
 .pos3 {
-  top: 27%;
-  left: 48%;
+  top: 15%;
+  left: 60%;
 }
 
 .pos4 {
-  top: 33%;
-  left: 35%;
+  top: 15%;
+  left: 75%;
 }
 
 .pos5 {
-  top: 26%;
-  left: 36%;
+  top: 35%;
+  left: 7%;
 }
 
 .pos6 {
-  top: 33%;
-  left: 44%;
+  top: 35%;
+  left: 30%;
 }
 
 .pos7 {
-  top: 27%;
-  left: 59%;
+  top: 35%;
+  left: 60%;
 }
 
 .pos8 {
-  top: 31%;
-  left: 40%;
+  top: 35%;
+  left: 75%;
 }
 
 .pos9 {
-  top: 33%;
-  left: 32%;
+  top: 55%;
+  left: 7%;
 }
 
 .pos10 {
-  top: 26%;
-  left: 39%;
+  top: 55%;
+  left: 30%;
+}
+
+.pos11 {
+  top: 55%;
+  left: 75%;
 }
