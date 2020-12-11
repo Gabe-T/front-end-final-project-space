@@ -110,9 +110,9 @@ export class HomeComponent implements OnInit {
   getSpecificApod = (date: string) => {
     this.service.getRandomDate(date).subscribe((response) => {
       this.apod = response;
-      if(this.apod.media_type !== "image"){
+      if (this.apod.media_type !== 'image') {
         this.backOneDay(date);
-      }else{
+      } else {
         this.splitExplanation(this.apod.explanation);
         this.startTimers();
         console.log(this.apod, this.running, this.fade, this.counter);
@@ -131,9 +131,17 @@ export class HomeComponent implements OnInit {
   };
   splitExplanation = (p: string) => {
     const apodExp = p;
-    const expSplit = apodExp.match(/[^\.]+[\.]+/g);
-    console.log(expSplit);
-    this.sentenceArray = expSplit;
+    const expSplit = apodExp.split('. ');
+    const newArray = [];
+    expSplit.forEach((sentence, index) => {
+      if (sentence === '') {
+        expSplit.splice(index, 1);
+      } else {
+        sentence = sentence + '.';
+        newArray.push(sentence);
+      }
+    });
+    this.sentenceArray = newArray;
   };
 
   randomNum = () => {
