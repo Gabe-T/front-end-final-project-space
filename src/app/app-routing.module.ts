@@ -5,13 +5,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  // { path: 'second-component', component: SecondComponent },
-  { path: '',   redirectTo: '/home', pathMatch: 'full' }, // redirect to `first-component`
-  { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // redirect to `HomeComponent`
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }, // Wildcard route redirect to home.
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

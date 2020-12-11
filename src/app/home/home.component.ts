@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
   running: boolean = false;
   fadeTimer: any;
   runTimer: any;
+  regex: any = /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/g;
 
   constructor(
     private service: SpaceService,
@@ -59,17 +60,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((response) => {
       const date = response.get('date');
-      if (date) {
+      if (this.regex.test(date)) {
         this.getSpecificApod(date);
         this.stopTimers();
         console.log('getSpecificApod');
       } else {
         this.getApod();
         this.stopTimers();
-        console.log('getApod');
       }
     });
-    console.log(this.running, this.fade, this.counter);
   }
 
   timeout = () => {
@@ -115,7 +114,6 @@ export class HomeComponent implements OnInit {
       } else {
         this.splitExplanation(this.apod.explanation);
         this.startTimers();
-        console.log(this.apod, this.running, this.fade, this.counter);
       }
     });
   };
@@ -126,7 +124,6 @@ export class HomeComponent implements OnInit {
       this.currentDate = this.apod.date;
       this.splitExplanation(this.apod.explanation);
       this.startTimers();
-      console.log(this.apod, this.running, this.fade, this.counter);
     });
   };
   splitExplanation = (p: string) => {
