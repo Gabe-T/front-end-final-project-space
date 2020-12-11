@@ -12,7 +12,8 @@
         thumbLabel
         tickInterval="5"
       ></mat-slider>
-      <p matTooltip="description">osc 1 pitch</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">osc 1 pitch</p>
     </div>
     <div>
       <mat-slider
@@ -24,7 +25,8 @@
         thumbLabel
         tickInterval="5"
       ></mat-slider>
-      <p matTooltip="description">osc 2 pitch</p>
+      <p matTooltip="description" matTooltipPosition="left" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">osc 2 pitch</p>
     </div>
     <div>
       <mat-slider
@@ -36,7 +38,8 @@
         thumbLabel
         tickInterval="5"
       ></mat-slider>
-      <p matTooltip="description">osc 3 pitch</p>
+      <p matTooltip="description" matTooltipPosition="left" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">osc 3 pitch</p>
     </div>
   </div>
   <div>
@@ -50,7 +53,8 @@
         step=".001"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">osc 1 filter lfo</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">osc 1 filter lfo</p>
     </div>
     <div>
       <mat-slider
@@ -61,7 +65,7 @@
         step="1"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">osc 2 trig interval</p>
+      <p matTooltip="description" [matTooltipShowDelay]="250">osc 2 trig interval</p>
     </div>
     <div>
       <mat-slider
@@ -72,7 +76,7 @@
         step="1"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">osc 3 trig interval</p>
+      <p matTooltip="description" [matTooltipShowDelay]="250">osc 3 trig interval</p>
     </div>
   </div>
   <div>
@@ -85,7 +89,8 @@
         step=".01"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">osc 1 level</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">osc 1 level</p>
     </div>
     <div>
       <mat-slider
@@ -96,7 +101,7 @@
         step=".01"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">osc 2 level</p>
+      <p matTooltip="description" [matTooltipShowDelay]="250">osc 2 level</p>
     </div>
     <div>
       <mat-slider
@@ -107,7 +112,7 @@
         step=".01"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">osc 3 level</p>
+      <p matTooltip="description" [matTooltipShowDelay]="250">osc 3 level</p>
     </div>
   </div>
   <div>
@@ -120,7 +125,8 @@
         thumbLabel
         step=".01"
       ></mat-slider>
-      <p matTooltip="description">reverb level</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">reverb level</p>
     </div>
     <div>
       <mat-slider
@@ -131,7 +137,8 @@
         thumbLabel
         step=".1"
       ></mat-slider>
-      <p matTooltip="description">delay level</p>
+      <p matTooltip="description" matTooltipPosition="right" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">delay level</p>
     </div>
     <div>
       <mat-slider
@@ -142,7 +149,8 @@
         thumbLabel
         step=".05"
       ></mat-slider>
-      <p matTooltip="description">delay time divider</p>
+      <p matTooltip="description" matTooltipPosition="right" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">delay time divider</p>
     </div>
   </div>
   <div>
@@ -154,7 +162,8 @@
       step="1"
       thumbLabel
     ></mat-slider>
-    <p matTooltip="description">bpm</p>
+    <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">bpm</p>
   </div>
   <div>
     <mat-slider
@@ -166,6 +175,7 @@
       vertical="true"
       thumbLabel
     ></mat-slider>
-    <p matTooltip="description">master volume</p>
+    <p matTooltip="description" matTooltipPosition="left" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">master volume</p>
   </div>
 </div>
