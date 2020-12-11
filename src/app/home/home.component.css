@@ -104,7 +104,6 @@
   font-family: "Titillium Web", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
-
 }
 
 .pos1 {
@@ -160,4 +159,214 @@
 .pos11 {
   top: 55%;
   left: 75%;
+}
+
+@media only screen and (max-width: 768px) {
+  .text {
+    width: 95vw;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgba(128, 128, 128, 0.199);
+    position: absolute;
+    z-index: 3;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .pos1 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos2 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos3 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos4 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos5 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos6 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos7 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos8 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos9 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos10 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos11 {
+    top: 5%;
+    left: 7%;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .text {
+    width: 95vw;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgba(128, 128, 128, 0.199);
+    position: absolute;
+    z-index: 3;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .pos1 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos2 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos3 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos4 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos5 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos6 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos7 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos8 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos9 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos10 {
+    top: 5%;
+    left: 7%;
+  }
+
+  .pos11 {
+    top: 5%;
+    left: 7%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .text {
+    width: 90vw;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgba(128, 128, 128, 0.199);
+    position: absolute;
+    z-index: 3;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .pos1 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos2 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos3 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos4 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos5 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos6 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos7 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos8 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos9 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos10 {
+    top: 5%;
+    left: 10%;
+  }
+
+  .pos11 {
+    top: 5%;
+    left: 10%;
+  }
 }
