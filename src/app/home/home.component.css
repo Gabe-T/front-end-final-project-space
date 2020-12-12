@@ -7,6 +7,21 @@
   align-items: center;
 }
 
+.header {
+  display: flex;
+  z-index: 99;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  justify-content: space-around;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.header:hover {
+  color: rgba(255, 255, 255, 0.75);
+  transition: 1s;
+}
+
 .nasa-img {
   position: absolute;
   top: 0;
@@ -173,6 +188,13 @@
     padding-right: 20px;
     border-radius: 10px;
     text-align: center;
+  }
+
+  .header {
+    z-index: 99;
+    width: 100%;
+    position: absolute;
+    top: 0;
   }
 
   .pos1 {
