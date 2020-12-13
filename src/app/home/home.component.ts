@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
   running: boolean = false;
   fadeTimer: any;
   runTimer: any;
+  regex: any = /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/g;
 
   constructor(
     private service: SpaceService,
@@ -59,17 +60,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((response) => {
       const date = response.get('date');
-      if (date) {
+      if (this.regex.test(date)) {
         this.getSpecificApod(date);
         this.stopTimers();
         console.log('getSpecificApod');
       } else {
         this.getApod();
         this.stopTimers();
-        console.log('getApod');
       }
     });
-    console.log(this.running, this.fade, this.counter);
   }
 
   timeout = () => {
@@ -110,12 +109,11 @@ export class HomeComponent implements OnInit {
   getSpecificApod = (date: string) => {
     this.service.getRandomDate(date).subscribe((response) => {
       this.apod = response;
-      if(this.apod.media_type !== "image"){
+      if (this.apod.media_type !== 'image') {
         this.backOneDay(date);
-      }else{
+      } else {
         this.splitExplanation(this.apod.explanation);
         this.startTimers();
-        console.log(this.apod, this.running, this.fade, this.counter);
       }
     });
   };
@@ -126,16 +124,22 @@ export class HomeComponent implements OnInit {
       this.currentDate = this.apod.date;
       this.splitExplanation(this.apod.explanation);
       this.startTimers();
-      console.log(this.apod, this.running, this.fade, this.counter);
     });
   };
   splitExplanation = (p: string) => {
     const apodExp = p;
-    const stringMatch = /. /;
-    const expSplit = apodExp.match((/[^\.]+[\.]+/g));
-    
-    console.log(expSplit);
-    this.sentenceArray = expSplit;
+    const expSplit = apodExp.split('. ');
+    const newArray = [];
+    expSplit.forEach((sentence, index) => {
+      if (sentence === '') {
+        expSplit.splice(index, 1);
+      } else {
+        sentence = sentence + '.';
+        newArray.push(sentence);
+      }
+    });
+    this.sentenceArray = newArray;
+
   };
 
   randomNum = () => {
