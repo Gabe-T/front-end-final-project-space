@@ -37,7 +37,7 @@
         step=".001"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
+      <p matTooltip="description" matTooltipPosition="left" [matTooltipShowDelay]="250"
       [matTooltipHideDelay]="500">osc 1 filter lfo</p>
     </div>
   </div>
@@ -50,7 +50,8 @@
         max="7500"
         step="10"
       ></mat-slider>
-      <p matTooltip="description">osc 2 filter</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">osc 2 filter</p>
     </div>
     <div>
       <mat-slider
@@ -61,7 +62,7 @@
         step=".01"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">osc 2 level</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250">osc 2 level</p>
     </div>
     <div>
       <mat-slider
@@ -72,7 +73,7 @@
         step="1"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description" [matTooltipShowDelay]="250">osc 2 trig interval</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250">osc 2 trig interval</p>
     </div>
   </div>
   <div class="Osc3 s-col">
@@ -84,7 +85,8 @@
         max="7500"
         step="10"
       ></mat-slider>
-      <p matTooltip="description">osc 3 filter</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
+      [matTooltipHideDelay]="500">osc 3 filter</p>
     </div>
     <div>
       <mat-slider
@@ -95,7 +97,7 @@
         step=".01"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">osc 3 level</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250">osc 3 level</p>
     </div>
     <div>
       <mat-slider
@@ -106,7 +108,7 @@
         step="1"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description" [matTooltipShowDelay]="250">osc 3 trig interval</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250">osc 3 trig interval</p>
     </div>
   </div>
   <div class="switches-noise s-col">
@@ -119,7 +121,7 @@
         [(ngModel)]="switchOsc3ADValue"
         (change)="getOsc3ADSwitch()"
       ></mat-slide-toggle>
-      <p matTooltip="description">osc2/3 att/dec</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250" [matTooltipHideDelay]="500">osc2/3 att/dec</p>
     </div>
     <div>
       <mat-slide-toggle
@@ -130,7 +132,7 @@
         [(ngModel)]="switchOsc3TypeValue"
         (change)="getOsc3TypeSwitch()"
       ></mat-slide-toggle>
-      <p matTooltip="description">osc 2/3 type</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250">osc 2/3 type</p>
     </div>
     <div>
       <mat-slider
@@ -141,7 +143,7 @@
         step=".01"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">noise level</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250">noise level</p>
     </div>
     <div>
       <mat-slider
@@ -152,7 +154,7 @@
         step="1"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">noise filter</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250">noise filter</p>
     </div>
   </div>
   <div>
@@ -177,7 +179,7 @@
         step=".001"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description" matTooltipPosition="right" [matTooltipShowDelay]="250"
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
       [matTooltipHideDelay]="500">delay level</p>
     </div>
     <div>
@@ -189,7 +191,7 @@
         thumbLabel
         step=".05"
       ></mat-slider>
-      <p matTooltip="description" matTooltipPosition="right" [matTooltipShowDelay]="250"
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250"
       [matTooltipHideDelay]="500">delay time divider</p>
     </div>
   </div>
@@ -216,7 +218,7 @@
         vertical="true"
         thumbLabel
       ></mat-slider>
-      <p matTooltip="description">bpm</p>
+      <p matTooltip="description" matTooltipPosition="above" [matTooltipShowDelay]="250" [matTooltipHideDelay]="500">bpm</p>
     </div>
   </div>
   <div>
