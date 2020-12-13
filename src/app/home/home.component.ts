@@ -139,6 +139,7 @@ export class HomeComponent implements OnInit {
       }
     });
     this.sentenceArray = newArray;
+
   };
 
   randomNum = () => {
