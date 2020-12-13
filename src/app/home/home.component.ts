@@ -131,7 +131,9 @@ export class HomeComponent implements OnInit {
   };
   splitExplanation = (p: string) => {
     const apodExp = p;
-    const expSplit = apodExp.match(/[^\.]+[\.]+/g);
+    const stringMatch = /. /;
+    const expSplit = apodExp.match((/[^\.]+[\.]+/g));
+    
     console.log(expSplit);
     this.sentenceArray = expSplit;
   };
