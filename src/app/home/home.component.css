@@ -321,18 +321,16 @@
   .image-container {
     height: 100%;
     width: 100%;
+    overflow: auto;
+    max-height: 100%;
   }
-
-  /* .nasa-img {
-    display: none;
-  } */
 
   .nasa-overlay-img {
     height: 100%;
   }
 
   .text {
-    width: 95vw;
+    width: 90vw;
     color: white;
     font-size: 1rem;
     background-color: rgba(128, 128, 128, 0.199);
@@ -345,83 +343,84 @@
   }
 
   .title-text {
+    margin-top: 20px;
     font-size: 1.2rem;
   }
 
   .pos1 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos2 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos3 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos4 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos5 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos6 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos7 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos8 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos9 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos10 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 
   .pos11 {
     position: fixed;
     left: 50%;
-    top: 12%;
+    top: 25%;
     transform: translate(-50%, -50%);
   }
 }
