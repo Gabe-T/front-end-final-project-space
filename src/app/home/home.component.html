@@ -3,71 +3,81 @@
 </div> -->
 <div class="image-container">
   <div class="header">
-  <button mat-button class="random-button" (click)="backOneDay(apod.date)">backOneDay</button>
-  <button mat-button class="random-button" (click)="getRandomApod()">random date</button>
-  <button mat-button class="random-button" (click)="backHome()">today</button>
-  <button mat-button class="random-button" (click)="forwardOneDay(apod.date)">nextDay</button>
+    <div class="nav-button">
+      <button mat-button class="random-button" (click)="backOneDay(apod.date)">
+        Back One Day
+      </button>
+      <i
+        class="fas fa-angle-double-left nav-icon"
+        (click)="backOneDay(apod.date)"
+      ></i>
+    </div>
+    <div class="nav-button">
+      <button mat-button class="random-button" (click)="getRandomApod()">
+        Random Date
+      </button>
+      <i class="fas fa-random nav-icon"></i>
+    </div>
+    <div class="nav-button">
+      <button mat-button class="random-button" (click)="backHome()">
+        Today
+      </button>
+      <i class="fas fa-user-astronaut nav-icon"></i>
+    </div>
+    <div class="nav-button">
+      <button
+        mat-button
+        class="random-button"
+        (click)="forwardOneDay(apod.date)"
+      >
+        Next Day
+      </button>
+      <i class="fas fa-angle-double-right nav-icon"></i>
+    </div>
   </div>
   <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
-<div class="image-container">
-  <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
-  <img
-    class="nasa-overlay-img"
-    src="{{ apod?.url }}"
-    alt="nasa pic of the day"
-  />
+  <div class="image-container">
+    <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
+    <img
+      class="nasa-overlay-img"
+      src="{{ apod?.url }}"
+      alt="nasa pic of the day"
+    />
 
-  <div
-    [@fadeinandout]="fade ? 'in' : 'out'"
-    class="text"
-    [ngClass]="{
-      pos1: random === 1,
-      pos2: random === 2,
-      pos3: random === 3,
-      pos4: random === 4,
-      pos5: random === 5,
-      pos6: random === 6,
-      pos7: random === 7,
-      pos8: random === 8,
-      pos9: random === 9,
-      pos10: random === 10,
-      pos11: random === 11
-    }"
-  >
-    <p [ngClass]="{ hide: counter > 0 }" class="title-text">
-      {{ apod?.title }}
-    </p>
-    <p [ngClass]="{ hide: counter > 0 }" class="title-text">{{ apod?.date }}</p>
-    <p>{{ currentSentence }}</p>
+    <div
+      [@fadeinandout]="fade ? 'in' : 'out'"
+      class="text"
+      [ngClass]="{
+        pos1: random === 1,
+        pos2: random === 2,
+        pos3: random === 3,
+        pos4: random === 4,
+        pos5: random === 5,
+        pos6: random === 6,
+        pos7: random === 7,
+        pos8: random === 8,
+        pos9: random === 9,
+        pos10: random === 10,
+        pos11: random === 11
+      }"
+    >
+      <p [ngClass]="{ hide: counter > 0 }" class="title-text">
+        {{ apod?.title }}
+      </p>
+      <p [ngClass]="{ hide: counter > 0 }" class="title-text">
+        {{ apod?.date }}
+      </p>
+      <p>{{ currentSentence }}</p>
+    </div>
   </div>
+  <mat-accordion> </mat-accordion>
+  <mat-expansion-panel class="panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <img class="nasynth-text" src="./assets/nasa-white.png" alt="" />
+      </mat-panel-title>
+      <mat-panel-description> </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-synth></app-synth>
+  </mat-expansion-panel>
 </div>
-<div class="arrow-container">
-  <object
-    class="left arrows"
-    type="image/svg+xml"
-    data="./assets/left-arrows.svg"
-    alt=""
-  ></object>
-  <object
-    class="right arrows"
-    type="image/svg+xml"
-    data="./assets/right-arrows.svg"
-    alt=""
-  ></object>
-  <!-- <object
-    class="bottom arrows"
-    type="image/svg+xml"
-    data="./assets/left-arrows.svg"
-    alt=""
-  ></object> -->
-</div>
-<mat-accordion> </mat-accordion>
-<mat-expansion-panel class="panel">
-  <mat-expansion-panel-header>
-    <mat-panel-title> Synth Component Expander </mat-panel-title>
-    <mat-panel-description>
-      This can contain a logo for the app, name of the synth, etc
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <app-synth></app-synth>
-</mat-expansion-panel>
