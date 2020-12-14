@@ -8,6 +8,8 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { MatDialog } from '@angular/material/dialog';
+import { AboutDialogComponent } from '../about-dialog/about-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -54,7 +56,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private service: SpaceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -139,7 +142,6 @@ export class HomeComponent implements OnInit {
       }
     });
     this.sentenceArray = newArray;
-
   };
 
   randomNum = () => {
@@ -239,4 +241,12 @@ export class HomeComponent implements OnInit {
     this.fade = false;
     this.counter = 0;
   };
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AboutDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
 }
