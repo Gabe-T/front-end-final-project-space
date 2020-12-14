@@ -59,14 +59,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((response) => {
-      const date = response.get('date');
-      if (this.regex.test(date)) {
+      let date = response.get('date');
+
+      if (date) {
+        this.stopTimers();
         this.getSpecificApod(date);
-        this.stopTimers();
-        console.log('getSpecificApod');
+        console.log('getSpecificApod' + ' ' + date);
       } else {
-        this.getApod();
         this.stopTimers();
+        this.getApod();
+        console.log('getApod' + ' ' + date);
       }
     });
   }
@@ -107,7 +109,7 @@ export class HomeComponent implements OnInit {
   };
 
   getSpecificApod = (date: string) => {
-    this.service.getRandomDate(date).subscribe((response) => {
+    this.service.getSpecificApod(date).subscribe((response) => {
       this.apod = response;
       if (this.apod.media_type !== 'image') {
         this.backOneDay(date);
@@ -139,7 +141,6 @@ export class HomeComponent implements OnInit {
       }
     });
     this.sentenceArray = newArray;
-
   };
 
   randomNum = () => {
