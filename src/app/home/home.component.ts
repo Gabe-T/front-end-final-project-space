@@ -124,8 +124,12 @@ export class HomeComponent implements OnInit {
     this.service.getApod().subscribe((response) => {
       this.apod = response;
       this.currentDate = this.apod.date;
-      this.splitExplanation(this.apod.explanation);
-      this.startTimers();
+      if (this.apod.media_type !== 'image') {
+        this.backOneDay(this.currentDate);
+      } else {
+        this.splitExplanation(this.apod.explanation);
+        this.startTimers();
+      }
     });
   };
   splitExplanation = (p: string) => {
