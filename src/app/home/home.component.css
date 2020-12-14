@@ -118,6 +118,11 @@
   transition: all 1s;
 }
 
+.mat-expansion-panel-header-description {
+  color: white;
+  justify-content: flex-end;
+}
+
 .panel:hover {
   background-color: rgba(0, 0, 0, 0.507);
 }

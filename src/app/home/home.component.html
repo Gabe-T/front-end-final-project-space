@@ -5,24 +5,20 @@
   <div class="header">
     <div class="nav-button">
       <button mat-button class="random-button" (click)="backOneDay(apod.date)">
-        Back One Day
+        <i class="fas fa-angle-double-left nav-icon"></i>Back One Day
       </button>
-      <i
-        class="fas fa-angle-double-left nav-icon"
-        (click)="backOneDay(apod.date)"
-      ></i>
     </div>
     <div class="nav-button">
       <button mat-button class="random-button" (click)="getRandomApod()">
         Random Date
       </button>
-      <i class="fas fa-random nav-icon"></i>
+      <i class="fas fa-random nav-icon" (click)="getRandomApod()"></i>
     </div>
     <div class="nav-button">
       <button mat-button class="random-button" (click)="backHome()">
         Today
       </button>
-      <i class="fas fa-user-astronaut nav-icon"></i>
+      <i class="fas fa-user-astronaut nav-icon" (click)="backHome()"></i>
     </div>
     <div class="nav-button">
       <button
@@ -31,8 +27,8 @@
         (click)="forwardOneDay(apod.date)"
       >
         Next Day
+        <i class="fas fa-angle-double-right nav-icon"></i>
       </button>
-      <i class="fas fa-angle-double-right nav-icon"></i>
     </div>
   </div>
   <img class="nasa-img" src="{{ apod?.url }}" alt="nasa pic of the day" />
@@ -76,7 +72,9 @@
       <mat-panel-title>
         <img class="nasynth-text" src="./assets/nasa-white.png" alt="" />
       </mat-panel-title>
-      <mat-panel-description> </mat-panel-description>
+      <mat-panel-description>
+        <button mat-button (click)="openDialog()">About</button>
+      </mat-panel-description>
     </mat-expansion-panel-header>
     <app-synth></app-synth>
   </mat-expansion-panel>
