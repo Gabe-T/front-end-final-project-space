@@ -265,7 +265,7 @@ export class SynthComponent implements OnInit {
     if (this.switchOsc2TypeValue === true) {
       this.synth2.oscillator.type = 'sine';
     } else {
-      this.synth2.oscillator.type = 'square';
+      this.synth2.oscillator.type = 'triangle';
     }
   }
 

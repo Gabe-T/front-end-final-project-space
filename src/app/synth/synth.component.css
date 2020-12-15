@@ -6,13 +6,18 @@ p {
 
 .synth-container {
   width: 100%;
-  /* height: 15%; */
+  height: 15%;
   background-color: rgba(128, 128, 128, 0.055);
   display: flex;
   color: white;
   backdrop-filter: blur(2px);
   justify-content: space-around;
   /* flex-wrap: wrap; */
+}
+
+.switches {
+  display: flex;
+  justify-content: space-around;
 }
 
 mat-slider {
@@ -36,11 +41,14 @@ mat-slider {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+  text-align: center;
 }
 
-.Osc1 {
+.main-sliders {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
 }
-
 .Osc2 {
 }
 
@@ -50,11 +58,19 @@ mat-slider {
 .switches-noise {
 }
 
-.fx {
+.form-1 {
+  display: flex;
+  flex-direction: column;
+}
+button {
+  border: rgb(37, 37, 37) 1px solid;
+}
+
+.patch-memory {
+  display: flex;
+  flex-direction: column;
 }
 .master {
-  display: flex;
-  flex-direction: row;
   align-items: center;
 }
 @media only screen and (max-width: 1100px) {
@@ -67,5 +83,8 @@ mat-slider {
   }
   .row-2 {
     width: auto;
+  }
+  .patch-memory {
+    flex-direction: row;
   }
 }
