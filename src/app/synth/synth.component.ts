@@ -6,6 +6,8 @@ import * as Tonal from '@tonaljs/tonal';
 // import * as p5 from 'p5';
 // import * as dat from 'dat.gui';
 import { StereoFeedbackEffect } from 'tone/build/esm/effect/StereoFeedbackEffect';
+import { PatchService } from '../patch.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-synth',
@@ -54,19 +56,18 @@ export class SynthComponent implements OnInit {
   sliderOsc1FilterLfoValue: number = 2;
   sliderOsc1LevelValue: number = 0.5;
 
-  switchOsc3ADValue: boolean = false;
-
   //OSC2
   sliderOsc2FilterValue: number = 10000;
   sliderOsc2LevelValue: number = 0.5;
   sliderOsc2IntervalValue: number = 7;
-  switchOsc2ADValue: boolean = false;
-  switchOsc2TypeValue: boolean;
+  switchOsc2ADValue: boolean = true;
+  switchOsc2TypeValue: boolean = false;
 
   //OSC3
   sliderOsc3FilterValue: number = 10000;
   sliderOsc3LevelValue: number = 0.5;
   sliderOsc3IntervalValue: number = 7;
+  switchOsc3ADValue: boolean = true;
   switchOsc3TypeValue: boolean = false;
   //NOISE
   sliderNoiseLevelValue: number = 0.3;
@@ -84,8 +85,9 @@ export class SynthComponent implements OnInit {
   flavor: string;
   wave1: any;
   comp: any;
+  patches: any;
 
-  constructor() {
+  constructor(private patchService: PatchService) {
     //const gui = new dat.GUI();
     this.key1 = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
@@ -202,50 +204,63 @@ export class SynthComponent implements OnInit {
   }
 
   getOscSlider(value: number) {
+    this.sliderOsc1PitchValue = value;
     this.synth1.frequency.value = this.scale1[value];
 
-    this.synth3.frequency.value = this.scale3[value];
     this.key1[this.sliderOsc1PitchValue];
   }
 
   getOsc2FilterSlider(value: number) {
+    this.sliderOsc2FilterValue = value;
     this.osc2Filter.frequency.value = value;
   }
   getOsc3FilterSlider(value: number) {
+    this.sliderOsc3FilterValue = value;
     this.osc3Filter.frequency.value = value;
   }
 
   getAmp1Slider(value: number) {
+    this.sliderOsc1LevelValue = value;
     this.amp1.gain.value = value;
+    console.log(this.sliderOsc1LevelValue);
   }
   getAmp2Slider(value: number) {
+    this.sliderOsc2LevelValue = value;
     this.amp2.gain.value = value;
   }
   getAmp3Slider(value: number) {
+    this.sliderOsc3LevelValue = value;
     this.amp3.gain.value = value;
   }
   getAmp4Slider(value: number) {
+    this.sliderNoiseLevelValue = value;
     this.amp4.gain.value = value;
   }
   getAmp5Slider(value: number) {
+    this.sliderKickVolValue = value;
     this.amp5.gain.value = value;
   }
 
   getReverbLevelValue(value: number) {
+    this.sliderReverbLevelValue = value;
     this.reverb.wet.value = value;
   }
 
   getDelayLevelValue(value: number) {
+    this.sliderDelayLevelValue = value;
     this.delay.wet.value = value;
   }
 
   getDelayTimeValue(value: number) {
+    this.sliderDelayTimeValue = value;
     this.delay.delayTime.value = value;
   }
   getFilterSlider(value: number) {
+    this.sliderOsc1FilterLfoValue = value;
     this.autofilter.frequency.value = value;
   }
   getNoiseFilterSlider(value: number) {
+    this.sliderNoiseFilterValue = value;
     this.autofilter2.baseFrequency = value;
   }
   getOsc2IntervalSlider(value: number) {
@@ -254,58 +269,106 @@ export class SynthComponent implements OnInit {
 
   getOsc2ADSwitch() {
     if (this.switchOsc2ADValue === true) {
+      // this.switchOsc2ADValue = false;
       this.synth2.envelope.attack = 0.001;
     } else {
+      // this.switchOsc2ADValue = true;
       this.synth2.envelope.attack = 0.2;
       this.synth2.envelope.decay = 1;
     }
   }
 
+  getOsc2ADSwitchV2 = (value: boolean) => {
+    if (value === true) {
+      this.switchOsc2ADValue = true;
+      this.synth2.envelope.attack = 0.001;
+    } else {
+      this.switchOsc2ADValue = false;
+      this.synth2.envelope.attack = 0.2;
+      this.synth2.envelope.decay = 1;
+    }
+  };
+
   getOsc2TypeSwitch() {
     if (this.switchOsc2TypeValue === true) {
+      // this.switchOsc2TypeValue = false;
       this.synth2.oscillator.type = 'sine';
     } else {
+      // this.switchOsc2TypeValue = true;
       this.synth2.oscillator.type = 'triangle';
     }
   }
 
+  getOsc2TypeSwitchV2 = (value: boolean) => {
+    if (value === true) {
+      this.switchOsc2TypeValue = true;
+      this.synth2.oscillator.type = 'sine';
+    } else {
+      this.switchOsc2TypeValue = false;
+      this.synth2.oscillator.type = 'triangle';
+    }
+  };
+
   getOsc3TypeSwitch() {
     if (this.switchOsc3TypeValue === true) {
+      // this.switchOsc3TypeValue = false;
       this.synth3.oscillator.type = 'sawtooth';
     } else {
+      // this.switchOsc3TypeValue = true;
       this.synth3.oscillator.type = 'sine';
     }
-    console.log(this.synth3.oscillator.type);
   }
+
+  getOsc3TypeSwitchV2 = (value: boolean) => {
+    if (value === true) {
+      this.switchOsc3TypeValue = true;
+      this.synth3.oscillator.type = 'sawtooth';
+    } else {
+      this.switchOsc3TypeValue = false;
+      this.synth3.oscillator.type = 'sine';
+    }
+  };
 
   getOsc3ADSwitch() {
     if (this.switchOsc3ADValue === true) {
+      // this.switchOsc3ADValue = false;
       this.synth3.envelope.attack = 0.001;
     } else {
+      // this.switchOsc3ADValue = true;
       this.synth3.envelope.attack = 0.2;
       this.synth3.envelope.decay = 1;
     }
-    console.log(this.switchOsc3ADValue);
   }
 
-  getOsc3IntervalSlider(value: number) {
+  getOsc3ADSwitchV2 = (value: boolean) => {
+    if (value === true) {
+      this.switchOsc3ADValue = true;
+      this.synth3.envelope.attack = 0.001;
+    } else {
+      this.switchOsc3ADValue = false;
+      this.synth3.envelope.attack = 0.2;
+      this.synth3.envelope.decay = 1;
+    }
+  };
+
+  getOsc3IntervalSlider = (value: number) => {
     this.sliderOsc3IntervalValue = value;
-  }
+  };
 
   getMasterVolSlider(value: number) {
+    this.sliderMasterVolumeValue = value;
     this.vol.volume.value = value;
   }
   getMasterFilterSlider(value: number) {
+    this.sliderMasterFilterValue = value;
     this.masterFilter.frequency.value = value;
   }
 
   getBPMSlider(value: number) {
+    this.bpmSliderValue = value;
     Tone.Transport.bpm.value = value;
   }
 
-  getChecked1(value: boolean) {
-    console.log(value);
-  }
   play() {
     this.vol.mute = false;
     Tone.Transport.start();
@@ -334,7 +397,101 @@ export class SynthComponent implements OnInit {
     Tone.start();
     this.autofilter.start();
     this.autofilter2.start();
+    this.getPatches();
   }
+
+  getPatches = () => {
+    this.patchService.getPatches().subscribe((response) => {
+      this.patches = response;
+      console.log(this.patches);
+    });
+  };
+
+  submitPatch = (form: NgForm) => {
+    let name = form.value.name;
+    let patch: any = {
+      patch_name: name,
+      osc1_pitch_value: this.sliderOsc1PitchValue,
+      osc1_filter_lfo_value: this.sliderOsc1FilterLfoValue,
+      osc1_level_value: this.sliderOsc1LevelValue,
+      osc2_filter_value: this.sliderOsc2FilterValue,
+      osc2_level_value: this.sliderOsc2LevelValue,
+      osc2_interval_value: this.sliderOsc2IntervalValue,
+      osc2_ad_value: this.switchOsc2ADValue,
+      osc2_type_value: this.switchOsc2TypeValue,
+      osc3_filter_value: this.sliderOsc3FilterValue,
+      osc3_level_value: this.sliderOsc3LevelValue,
+      osc3_interval_value: this.sliderOsc3IntervalValue,
+      osc3_type_value: this.switchOsc3ADValue,
+      osc3_ad_value: this.switchOsc3ADValue,
+      noise_level_value: this.sliderNoiseLevelValue,
+      noise_filter_value: this.sliderNoiseFilterValue,
+      reverb_level_value: this.sliderReverbLevelValue,
+      delay_level_value: this.sliderDelayLevelValue,
+      delay_time_value: this.sliderDelayTimeValue,
+      master_volume_value: this.sliderMasterVolumeValue,
+      master_filter_value: this.sliderMasterFilterValue,
+      kick_vol_value: this.sliderKickVolValue,
+      bpm_value: this.bpmSliderValue,
+    };
+    console.log(patch);
+    this.patchService.postPatch(patch).subscribe((response) => {});
+    form.reset();
+    this.getPatches();
+  };
+
+  loadPatch = (synthID: string) => {
+    let id = parseInt(synthID);
+
+    let found = this.patches.find((patch) => {
+      return patch.id === id;
+    });
+    // this.sliderOsc1PitchValue = found.osc1_pitch_value;
+    // this.sliderOsc1FilterLfoValue = found.osc1_filter_lfo_value;
+    // this.sliderOsc1LevelValue = found.osc1_level_value;
+    // this.sliderOsc2FilterValue = found.osc2_filter_value;
+    // this.sliderOsc2LevelValue = found.osc2_level_value;
+    // this.sliderOsc2IntervalValue = found.osc2_interval_value;
+    // this.switchOsc2ADValue = found.osc2_ad_value;
+    // this.switchOsc2TypeValue = found.osc2_type_value;
+    // this.sliderOsc3FilterValue = found.osc3_filter_value;
+    // this.sliderOsc3LevelValue = found.osc3_level_value;
+    // this.sliderOsc3IntervalValue = found.osc3_interval_value;
+    // this.switchOsc3ADValue = found.osc3_type_value;
+    // this.switchOsc3ADValue = found.osc3_ad_value;
+    // this.sliderNoiseLevelValue = found.noise_level_value;
+    // this.sliderNoiseFilterValue = found.noise_filter_value;
+    // this.sliderReverbLevelValue = found.reverb_level_value;
+    // this.sliderDelayLevelValue = found.delay_level_value;
+    // this.sliderDelayTimeValue = found.delay_time_value;
+    // this.sliderMasterVolumeValue = found.master_volume_value;
+    // this.sliderMasterFilterValue = found.master_filter_value;
+    // this.sliderKickVolValue = found.kick_vol_value;
+    // this.bpmSliderValue = found.bpm_value;
+    this.getOscSlider(found.osc1_pitch_value);
+    this.getFilterSlider(found.osc1_filter_lfo_value);
+    this.getAmp1Slider(found.osc1_level_value);
+    this.getOsc2FilterSlider(found.osc2_filter_value);
+    this.getAmp2Slider(found.osc2_level_value);
+    this.getOsc2IntervalSlider(found.osc2_interval_value);
+    this.getOsc2ADSwitchV2(found.osc2_ad_value);
+    this.getOsc2TypeSwitchV2(found.osc2_type_value);
+    this.getOsc3FilterSlider(found.osc3_filter_value);
+    this.getAmp3Slider(found.osc3_level_value);
+    this.getOsc3IntervalSlider(found.osc3_interval_value);
+    this.getOsc3TypeSwitchV2(found.osc3_type_value);
+    this.getOsc3ADSwitchV2(found.osc3_ad_value);
+    this.getAmp4Slider(found.noise_level_value);
+    this.getNoiseFilterSlider(found.noise_filter_value);
+    this.getReverbLevelValue(found.reverb_level_value);
+    this.getDelayLevelValue(found.delay_level_value);
+    this.getDelayTimeValue(found.delay_time_value);
+    this.getMasterVolSlider(found.master_volume_value);
+    this.getMasterFilterSlider(found.master_filter_value);
+    this.getAmp5Slider(found.kick_vol_value);
+    this.getBPMSlider(found.bpm_value);
+    this.getMasterFilterSlider(found.master_filter_value);
+  };
 }
 //ideas
 //1. ramp up the gain with play() from 0 to smoothly bring in sounds of oscillators and sequences
