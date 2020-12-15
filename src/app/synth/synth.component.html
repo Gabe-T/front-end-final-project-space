@@ -45,8 +45,7 @@
         <mat-slider
           (input)="getFilterSlider($event.value)"
           [value]="sliderOsc1FilterLfoValue"
-          units="hz"
-          min="0.1"
+          min="0.001"
           max="4"
           step=".001"
           thumbLabel
@@ -117,12 +116,12 @@
       </div>
       <div class="switches">
         <mat-slide-toggle
-          [(ngModel)]="switchOsc2ADValue"
           (change)="getOsc2ADSwitch()"
+          [(ngModel)]="switchOsc2ADValue"
         ></mat-slide-toggle>
         <mat-slide-toggle
-          [(ngModel)]="switchOsc2TypeValue"
           (change)="getOsc2TypeSwitch()"
+          [(ngModel)]="switchOsc2TypeValue"
         ></mat-slide-toggle>
       </div>
       <div class="switches">
@@ -151,6 +150,7 @@
           min="10"
           max="7500"
           step="10"
+          thumbLabel
         ></mat-slider>
         <p
           matTooltip="Low Pass Filter for Osc 3, lower values only allow low frequency sounds through"
@@ -213,7 +213,13 @@
         >
           envelope
         </p>
-        <p>{{ synth3.oscillator.type }}</p>
+        <p
+          matTooltip="Choose between sine or sawtooth waveform for Osc3"
+          matTooltipPosition="above"
+          [matTooltipShowDelay]="250"
+        >
+          {{ synth3.oscillator.type }}
+        </p>
       </div>
     </div>
   </div>
@@ -224,13 +230,13 @@
         <mat-slider
           (input)="getAmp4Slider($event.value)"
           [value]="sliderNoiseLevelValue"
-          min="0"
-          max="1"
+          min=".01"
+          max=".5"
           step=".01"
           thumbLabel
         ></mat-slider>
         <p
-          matTooltip="description"
+          matTooltip="Affects gain of Wind Oscillator"
           matTooltipPosition="above"
           [matTooltipShowDelay]="250"
         >
@@ -241,13 +247,13 @@
         <mat-slider
           (input)="getNoiseFilterSlider($event.value)"
           [value]="sliderNoiseFilterValue"
-          min="0"
+          min="1"
           max="1000"
           step="1"
           thumbLabel
         ></mat-slider>
         <p
-          matTooltip="Controls gain of Wind"
+          matTooltip="Controls Low Pass Filter Cutoff of Wind Oscillator"
           matTooltipPosition="above"
           [matTooltipShowDelay]="250"
         >
@@ -379,18 +385,29 @@
       </div>
     </div>
     <div class="patch-memory s-col">
-      <form class="form-1">
-        <p><label for="">Save a Patch</label></p>
-        <p><input placeholder="Patch Name" /></p>
+      <form
+        #patchform="ngForm"
+        (ngSubmit)="submitPatch(patchform)"
+        class="form-1"
+      >
+        <label for="name">Save a Patch</label>
+        <input name="name" id="name" placeholder="Patch Name" ngModel />
         <button mat-button>Save</button>
-        <p><label for="patches">Load a Patch</label></p>
-        <p>
-          <select id="patches">
-            <option value="option">Jupiter</option>
-            <option value="option">Mars</option>
-            <option value="option">Meteor Shower</option>
-          </select>
-        </p>
+      </form>
+
+      <form
+        #patchLoadForm="ngForm"
+        (ngSubmit)="loadPatch(patchLoadForm.value.id)"
+        class="form-1"
+      >
+        <label for="patches">Load a Patch</label>
+
+        <select id="patches" name="id" ngModel>
+          <option *ngFor="let patch of patches" value="{{ patch.id }}">
+            {{ patch.patch_name }}
+          </option>
+        </select>
+
         <button mat-button>Load</button>
       </form>
     </div>
