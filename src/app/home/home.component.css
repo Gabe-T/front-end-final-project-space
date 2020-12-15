@@ -239,76 +239,16 @@
     top: 0;
   }
 
-  .pos1 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos2 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos3 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos4 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos5 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos6 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos7 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos8 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos9 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos10 {
-    position: fixed;
-    left: 50%;
-    top: 15%;
-    transform: translate(-50%, -50%);
-  }
-
+  .pos1,
+  .pos2,
+  .pos3,
+  .pos4,
+  .pos5,
+  .pos6,
+  .pos7,
+  .pos8,
+  .pos9,
+  .pos10,
   .pos11 {
     position: fixed;
     left: 50%;
@@ -347,76 +287,16 @@
     font-size: 1.2rem;
   }
 
-  .pos1 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos2 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos3 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos4 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos5 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos6 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos7 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos8 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos9 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
-  .pos10 {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-  }
-
+  .pos1,
+  .pos2,
+  .pos3,
+  .pos4,
+  .pos5,
+  .pos6,
+  .pos7,
+  .pos8,
+  .pos9,
+  .pos10,
   .pos11 {
     position: fixed;
     left: 50%;
