@@ -210,10 +210,6 @@
 }
 
 @media only screen and (max-width: 1080px) {
-  .nasa-img {
-    display: none;
-  }
-
   .nasa-overlay-img {
     height: 100%;
   }
