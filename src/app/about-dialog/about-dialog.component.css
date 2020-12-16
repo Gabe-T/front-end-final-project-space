@@ -22,3 +22,10 @@ mat-dialog-container {
 .globe-logo {
   height: 125px;
 }
+
+@media only screen and (max-width: 1080px) {
+  body {
+    overflow: auto;
+    max-height: 95vh;
+  }
+}
