@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class PatchService {
-  baseURL: string = 'http://localhost:3000';
+  baseURL: string = environment.apiBaseUrl;
   constructor(private http: HttpClient) {}
 
   getPatches = () => {
