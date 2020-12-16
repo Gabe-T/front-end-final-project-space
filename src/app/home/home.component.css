@@ -238,7 +238,7 @@ body {
 
 @media only screen and (max-width: 618px) {
   .panel {
-    max-height: 100vh;
+    max-height: 90vh;
     overflow: auto;
     z-index: 100;
   }

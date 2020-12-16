@@ -120,7 +120,7 @@ export class SynthComponent implements OnInit {
 
     this.amp1 = new Tone.Gain(0.5);
     this.amp2 = new Tone.Gain(0.5);
-    this.amp3 = new Tone.Gain(0.5);
+    this.amp3 = new Tone.Gain(0.2);
     this.amp4 = new Tone.Gain(0.5);
     this.amp5 = new Tone.Gain(0);
     this.comp = new Tone.Compressor(-20, 2);
@@ -435,9 +435,10 @@ export class SynthComponent implements OnInit {
       bpm_value: this.bpmSliderValue,
     };
     console.log(patch);
-    this.patchService.postPatch(patch).subscribe((response) => {});
+    this.patchService.postPatch(patch).subscribe((response) => {
+      this.getPatches();
+    });
     form.reset();
-    this.getPatches();
   };
 
   loadPatch = (synthID: string) => {
@@ -446,28 +447,6 @@ export class SynthComponent implements OnInit {
     let found = this.patches.find((patch) => {
       return patch.id === id;
     });
-    // this.sliderOsc1PitchValue = found.osc1_pitch_value;
-    // this.sliderOsc1FilterLfoValue = found.osc1_filter_lfo_value;
-    // this.sliderOsc1LevelValue = found.osc1_level_value;
-    // this.sliderOsc2FilterValue = found.osc2_filter_value;
-    // this.sliderOsc2LevelValue = found.osc2_level_value;
-    // this.sliderOsc2IntervalValue = found.osc2_interval_value;
-    // this.switchOsc2ADValue = found.osc2_ad_value;
-    // this.switchOsc2TypeValue = found.osc2_type_value;
-    // this.sliderOsc3FilterValue = found.osc3_filter_value;
-    // this.sliderOsc3LevelValue = found.osc3_level_value;
-    // this.sliderOsc3IntervalValue = found.osc3_interval_value;
-    // this.switchOsc3ADValue = found.osc3_type_value;
-    // this.switchOsc3ADValue = found.osc3_ad_value;
-    // this.sliderNoiseLevelValue = found.noise_level_value;
-    // this.sliderNoiseFilterValue = found.noise_filter_value;
-    // this.sliderReverbLevelValue = found.reverb_level_value;
-    // this.sliderDelayLevelValue = found.delay_level_value;
-    // this.sliderDelayTimeValue = found.delay_time_value;
-    // this.sliderMasterVolumeValue = found.master_volume_value;
-    // this.sliderMasterFilterValue = found.master_filter_value;
-    // this.sliderKickVolValue = found.kick_vol_value;
-    // this.bpmSliderValue = found.bpm_value;
     this.getOscSlider(found.osc1_pitch_value);
     this.getFilterSlider(found.osc1_filter_lfo_value);
     this.getAmp1Slider(found.osc1_level_value);
