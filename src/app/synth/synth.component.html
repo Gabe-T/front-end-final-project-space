@@ -1,415 +1,422 @@
 <div class="synth-container">
-  <div class="row-1">
-    <button mat-button (mousedown)="msdown = true; play()">start</button>
-    <button mat-button (mousedown)="msdown = true; stop()">stop</button>
-    <div class="Osc1 s-col">
-      <div>
-        <p>Oscillator 1</p>
-        <mat-slider
-          (input)="getOscSlider($event.value)"
-          [value]="sliderOsc1PitchValue"
-          min="0"
-          max="12"
-          step="1"
-          thumbLabel
-          tickInterval="1"
-        ></mat-slider>
-        <p
-          matTooltip="Pitch range for Osc 1: C1-C3"
-          matTooltipPosition="left"
-          [matTooltipShowDelay]="250"
-          [matTooltipHideDelay]="500"
-        >
-          pitch
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getAmp1Slider($event.value)"
-          [value]="sliderOsc1LevelValue"
-          min="0"
-          max=".8"
-          step=".01"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="affects the gain of Oscillator 1"
-          matTooltipPosition="left"
-          [matTooltipShowDelay]="250"
-          [matTooltipHideDelay]="500"
-        >
-          level
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getFilterSlider($event.value)"
-          [value]="sliderOsc1FilterLfoValue"
-          min="0.001"
-          max="4"
-          step=".001"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="Affects filter cutoff time division for LFO"
-          matTooltipPosition="left"
-          [matTooltipShowDelay]="250"
-          [matTooltipHideDelay]="500"
-        >
-          filter lfo speed
-        </p>
-      </div>
+  <div class="transport">
+    <button
+      class="transport-button"
+      mat-button
+      (mousedown)="msdown = true; play()"
+    >
+      start
+    </button>
+    <button
+      class="transport-button"
+      mat-button
+      (mousedown)="msdown = true; stop()"
+    >
+      stop
+    </button>
+  </div>
+  <div class="Osc1 s-col">
+    <div>
+      <p>Oscillator 1</p>
+      <mat-slider
+        (input)="getOscSlider($event.value)"
+        [value]="sliderOsc1PitchValue"
+        min="0"
+        max="12"
+        step="1"
+        thumbLabel
+        tickInterval="1"
+      ></mat-slider>
+      <p
+        matTooltip="Pitch range for Osc 1: C1-C3"
+        matTooltipPosition="left"
+        [matTooltipShowDelay]="250"
+        [matTooltipHideDelay]="500"
+      >
+        pitch
+      </p>
     </div>
-    <div class="Osc2 s-col">
-      <div>
-        <p>Oscillator 2</p>
-        <mat-slider
-          (input)="getOsc2FilterSlider($event.value)"
-          [value]="sliderOsc2FilterValue"
-          min="10"
-          max="7500"
-          step="10"
-        ></mat-slider>
-        <p
-          matTooltip="Low Pass Filter for Osc 2, lower values only allow low frequency sounds through"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-          [matTooltipHideDelay]="500"
-        >
-          filter cutoff
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getAmp2Slider($event.value)"
-          [value]="sliderOsc2LevelValue"
-          min="0"
-          max="1"
-          step=".01"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="Affects the gain of Oscillator 2"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          level
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getOsc2IntervalSlider($event.value)"
-          [value]="sliderOsc2IntervalValue"
-          min="1"
-          max="16"
-          step="1"
-          color="accent"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="There is a counter incrementing once every beat. Oscillator 2 is triggered when the counter, divided by the trigger interval, has a remainder of zero."
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          trigger interval
-        </p>
-      </div>
-      <div class="switches">
-        <mat-slide-toggle
-          (change)="getOsc2ADSwitch()"
-          [(ngModel)]="switchOsc2ADValue"
-        ></mat-slide-toggle>
-        <mat-slide-toggle
-          (change)="getOsc2TypeSwitch()"
-          [(ngModel)]="switchOsc2TypeValue"
-        ></mat-slide-toggle>
-      </div>
-      <div class="switches">
-        <p
-          matTooltip="Produces a softer or harder attack envelope on the Oscillator"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          envelope
-        </p>
-        <p
-          matTooltip="Choose between square or sine waveform"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          {{ synth2.oscillator.type }}
-        </p>
-      </div>
+    <div>
+      <mat-slider
+        (input)="getAmp1Slider($event.value)"
+        [value]="sliderOsc1LevelValue"
+        min="0"
+        max=".8"
+        step=".01"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Affects the gain of Oscillator 1"
+        matTooltipPosition="left"
+        [matTooltipShowDelay]="250"
+        [matTooltipHideDelay]="500"
+      >
+        level
+      </p>
     </div>
-    <div class="Osc3 s-col">
+    <div>
+      <mat-slider
+        (input)="getFilterSlider($event.value)"
+        [value]="sliderOsc1FilterLfoValue"
+        min="0.001"
+        max="4"
+        step=".001"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Affects filter cutoff time division for LFO"
+        matTooltipPosition="left"
+        [matTooltipShowDelay]="250"
+        [matTooltipHideDelay]="500"
+      >
+        filter lfo speed
+      </p>
+    </div>
+  </div>
+  <div class="Osc2 s-col">
+    <div>
+      <p>Oscillator 2</p>
+      <mat-slider
+        (input)="getOsc2FilterSlider($event.value)"
+        [value]="sliderOsc2FilterValue"
+        min="10"
+        max="7500"
+        step="10"
+      ></mat-slider>
+      <p
+        matTooltip="Low Pass Filter for Osc 2, lower values only allow low frequency sounds through"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+        [matTooltipHideDelay]="500"
+      >
+        filter cutoff
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getAmp2Slider($event.value)"
+        [value]="sliderOsc2LevelValue"
+        min="0"
+        max="1"
+        step=".01"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Affects the gain of Oscillator 2"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        level
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getOsc2IntervalSlider($event.value)"
+        [value]="sliderOsc2IntervalValue"
+        min="1"
+        max="16"
+        step="1"
+        color="accent"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="There is a counter incrementing once every beat. Oscillator 2 is triggered when the counter, divided by the trigger interval, has a remainder of zero."
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        trigger interval
+      </p>
+    </div>
+    <div class="switches">
+      <mat-slide-toggle
+        (change)="getOsc2ADSwitch()"
+        [(ngModel)]="switchOsc2ADValue"
+      ></mat-slide-toggle>
+      <mat-slide-toggle
+        (change)="getOsc2TypeSwitch()"
+        [(ngModel)]="switchOsc2TypeValue"
+      ></mat-slide-toggle>
+    </div>
+    <div class="switches">
+      <p
+        matTooltip="Produces a softer or harder attack envelope on the Oscillator"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        envelope
+      </p>
+      <p
+        matTooltip="Choose between square or sine waveform"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        {{ synth2.oscillator.type }}
+      </p>
+    </div>
+  </div>
+  <div class="Osc3 s-col">
+    <div>
+      <p>Oscillator 3</p>
+      <mat-slider
+        (input)="getOsc3FilterSlider($event.value)"
+        [value]="sliderOsc3FilterValue"
+        min="10"
+        max="7500"
+        step="10"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Low Pass Filter for Osc 3, lower values only allow low frequency sounds through"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+        [matTooltipHideDelay]="500"
+      >
+        filter cutoff
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getAmp3Slider($event.value)"
+        [value]="sliderOsc3LevelValue"
+        min="0"
+        max="1"
+        step=".01"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Affects the gain of Osc 3"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        level
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getOsc3IntervalSlider($event.value)"
+        [value]="sliderOsc3IntervalValue"
+        min="1"
+        max="16"
+        step="1"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="There is a counter incrementing once every beat. Oscillator 3 is triggered when the counter, divided by the trigger interval, has a remainder not equal to zero."
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        trigger interval
+      </p>
+    </div>
+    <div class="switches">
+      <mat-slide-toggle
+        [(ngModel)]="switchOsc3ADValue"
+        (change)="getOsc3ADSwitch()"
+      ></mat-slide-toggle>
+      <mat-slide-toggle
+        [(ngModel)]="switchOsc3TypeValue"
+        (change)="getOsc3TypeSwitch()"
+      ></mat-slide-toggle>
+    </div>
+    <div class="switches">
+      <p
+        matTooltip="Produces a softer or harder attack envelope on the Oscillator"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        envelope
+      </p>
+      <p
+        matTooltip="Choose between sine or sawtooth waveform for Osc3"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        {{ synth3.oscillator.type }}
+      </p>
+    </div>
+  </div>
+  <div class="switches-noise s-col">
+    <div>
+      <p>Wind</p>
+      <mat-slider
+        (input)="getAmp4Slider($event.value)"
+        [value]="sliderNoiseLevelValue"
+        min=".01"
+        max=".5"
+        step=".01"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Affects gain of Wind Oscillator"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        level
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getNoiseFilterSlider($event.value)"
+        [value]="sliderNoiseFilterValue"
+        min="1"
+        max="1000"
+        step="1"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Controls Low Pass Filter Cutoff of Wind Oscillator"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        filter
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getAmp5Slider($event.value)"
+        [value]="sliderKickVolValue"
+        min=".01"
+        max="1.5"
+        step=".1"
+        thumbLabel
+      ></mat-slider>
+      <p matTooltip="gain of 4/4 kick. techno mode" matTooltipShowDelay="1000">
+        kick level
+      </p>
+    </div>
+  </div>
+  <div class="fx s-col">
+    <div>
+      <p>FX</p>
+      <mat-slider
+        (input)="getReverbLevelValue($event.value)"
+        [value]="sliderReverbLevelValue"
+        min=".01"
+        max="1"
+        thumbLabel
+        step=".01"
+      ></mat-slider>
+      <p
+        matTooltip="Controls how much of the total signal passes through the reverb effect"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+        [matTooltipHideDelay]="500"
+      >
+        reverb wet/dry
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getDelayLevelValue($event.value)"
+        [value]="sliderDelayLevelValue"
+        min=".1"
+        max="1"
+        step=".001"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Controls how much of the total signal passes through the delay effect"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+        [matTooltipHideDelay]="500"
+      >
+        delay wet/dry
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getDelayTimeValue($event.value)"
+        [value]="sliderDelayTimeValue"
+        min=".1"
+        max="1"
+        thumbLabel
+        step=".05"
+      ></mat-slider>
+      <p
+        matTooltip="Controls delay time, as divisions of bpm"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+        [matTooltipHideDelay]="500"
+      >
+        delay time divider
+      </p>
+    </div>
+  </div>
+  <div class="master s-col">
+    <p>Main Out</p>
+    <div class="main-sliders">
       <div>
-        <p>Oscillator 3</p>
         <mat-slider
-          (input)="getOsc3FilterSlider($event.value)"
-          [value]="sliderOsc3FilterValue"
-          min="10"
-          max="7500"
+          (input)="getMasterFilterSlider($event.value)"
+          [value]="sliderMasterFilterValue"
+          min="50"
+          max="12000"
           step="10"
+          vertical="true"
+        ></mat-slider>
+        <p matTooltip="Low Pass Filter over entire audio signal path">LPF</p>
+        <p></p>
+      </div>
+      <div>
+        <mat-slider
+          (input)="getBPMSlider($event.value)"
+          [value]="bpmSliderValue"
+          min="45"
+          max="180"
+          step="1"
+          vertical="true"
           thumbLabel
         ></mat-slider>
         <p
-          matTooltip="Low Pass Filter for Osc 3, lower values only allow low frequency sounds through"
+          matTooltip="Beats per minute, controls tempo of pattern and delay time"
           matTooltipPosition="above"
           [matTooltipShowDelay]="250"
           [matTooltipHideDelay]="500"
         >
-          filter cutoff
+          BPM
         </p>
       </div>
       <div>
         <mat-slider
-          (input)="getAmp3Slider($event.value)"
-          [value]="sliderOsc3LevelValue"
-          min="0"
-          max="1"
-          step=".01"
+          (input)="getMasterVolSlider($event.value)"
+          [value]="sliderMasterVolumeValue"
+          min="-40"
+          max="-8"
+          step=".1"
+          vertical="true"
           thumbLabel
         ></mat-slider>
-        <p
-          matTooltip="Affects the gain of Osc 3"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          level
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getOsc3IntervalSlider($event.value)"
-          [value]="sliderOsc3IntervalValue"
-          min="1"
-          max="16"
-          step="1"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="There is a counter incrementing once every beat. Oscillator 3 is triggered when the counter, divided by the trigger interval, has a remainder not equal to zero."
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          trigger interval
-        </p>
-      </div>
-      <div class="switches">
-        <mat-slide-toggle
-          [(ngModel)]="switchOsc3ADValue"
-          (change)="getOsc3ADSwitch()"
-        ></mat-slide-toggle>
-        <mat-slide-toggle
-          [(ngModel)]="switchOsc3TypeValue"
-          (change)="getOsc3TypeSwitch()"
-        ></mat-slide-toggle>
-      </div>
-      <div class="switches">
-        <p
-          matTooltip="Produces a softer or harder attack envelope on the Oscillator"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          envelope
-        </p>
-        <p
-          matTooltip="Choose between sine or sawtooth waveform for Osc3"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          {{ synth3.oscillator.type }}
+        <p matTooltip="Gain of entire signal path" matTooltipShowDelay="1000">
+          Vol
         </p>
       </div>
     </div>
   </div>
-  <div class="row-2">
-    <div class="switches-noise s-col">
-      <div>
-        <p>Wind</p>
-        <mat-slider
-          (input)="getAmp4Slider($event.value)"
-          [value]="sliderNoiseLevelValue"
-          min=".01"
-          max=".5"
-          step=".01"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="Affects gain of Wind Oscillator"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          level
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getNoiseFilterSlider($event.value)"
-          [value]="sliderNoiseFilterValue"
-          min="1"
-          max="1000"
-          step="1"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="Controls Low Pass Filter Cutoff of Wind Oscillator"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-        >
-          filter
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getAmp5Slider($event.value)"
-          [value]="sliderKickVolValue"
-          min=".01"
-          max="1"
-          step=".1"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="gain of 4/4 kick. techno mode"
-          matTooltipShowDelay="1000"
-        >
-          kick level
-        </p>
-      </div>
-    </div>
-    <div class="fx s-col">
-      <div>
-        <p>FX</p>
-        <mat-slider
-          (input)="getReverbLevelValue($event.value)"
-          [value]="sliderReverbLevelValue"
-          min=".01"
-          max="1"
-          thumbLabel
-          step=".01"
-        ></mat-slider>
-        <p
-          matTooltip="Controls how much of the total signal passes through the reverb effect"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-          [matTooltipHideDelay]="500"
-        >
-          reverb wet/dry
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getDelayLevelValue($event.value)"
-          [value]="sliderDelayLevelValue"
-          min=".1"
-          max="1"
-          step=".001"
-          thumbLabel
-        ></mat-slider>
-        <p
-          matTooltip="Controls how much of the total signal passes through the delay effect"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-          [matTooltipHideDelay]="500"
-        >
-          delay wet/dry
-        </p>
-      </div>
-      <div>
-        <mat-slider
-          (input)="getDelayTimeValue($event.value)"
-          [value]="sliderDelayTimeValue"
-          min=".1"
-          max="1"
-          thumbLabel
-          step=".05"
-        ></mat-slider>
-        <p
-          matTooltip="Controls delay time, as divisions of bpm"
-          matTooltipPosition="above"
-          [matTooltipShowDelay]="250"
-          [matTooltipHideDelay]="500"
-        >
-          delay time divider
-        </p>
-      </div>
-    </div>
-    <div class="master s-col">
-      <p>Main Out</p>
-      <div class="main-sliders">
-        <div>
-          <mat-slider
-            (input)="getMasterFilterSlider($event.value)"
-            [value]="sliderMasterFilterValue"
-            min="50"
-            max="12000"
-            step="10"
-            vertical="true"
-          ></mat-slider>
-          <p matTooltip="Low Pass Filter over entire audio signal path">LPF</p>
-          <p></p>
-        </div>
-        <div>
-          <mat-slider
-            (input)="getBPMSlider($event.value)"
-            [value]="bpmSliderValue"
-            min="45"
-            max="180"
-            step="1"
-            vertical="true"
-            thumbLabel
-          ></mat-slider>
-          <p
-            matTooltip="Beats per minute, controls tempo of pattern and delay time"
-            matTooltipPosition="above"
-            [matTooltipShowDelay]="250"
-            [matTooltipHideDelay]="500"
-          >
-            BPM
-          </p>
-        </div>
-        <div>
-          <mat-slider
-            (input)="getMasterVolSlider($event.value)"
-            [value]="sliderMasterVolumeValue"
-            min="-40"
-            max="-8"
-            step=".1"
-            vertical="true"
-            thumbLabel
-          ></mat-slider>
-          <p matTooltip="Gain of entire signal path" matTooltipShowDelay="1000">
-            Vol
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="patch-memory s-col">
-      <form
-        #patchform="ngForm"
-        (ngSubmit)="submitPatch(patchform)"
-        class="form-1"
-      >
-        <label for="name">Save a Patch</label>
-        <input name="name" id="name" placeholder="Patch Name" ngModel />
-        <button mat-button>Save</button>
-      </form>
+  <div class="patch-memory s-col">
+    <form
+      #patchform="ngForm"
+      (ngSubmit)="submitPatch(patchform)"
+      class="form-1"
+    >
+      <label for="name">Save a Patch</label>
+      <input name="name" id="name" placeholder="Patch Name" ngModel />
+      <button mat-button>Save</button>
+    </form>
 
-      <form
-        #patchLoadForm="ngForm"
-        (ngSubmit)="loadPatch(patchLoadForm.value.id)"
-        class="form-1"
-      >
-        <label for="patches">Load a Patch</label>
+    <form
+      #patchLoadForm="ngForm"
+      (ngSubmit)="loadPatch(patchLoadForm.value.id)"
+      class="form-1"
+    >
+      <label for="patches">Load a Patch</label>
 
-        <select id="patches" name="id" ngModel>
-          <option *ngFor="let patch of patches" value="{{ patch.id }}">
-            {{ patch.patch_name }}
-          </option>
-        </select>
+      <select id="patches" name="id" ngModel>
+        <option *ngFor="let patch of patches" value="{{ patch.id }}">
+          {{ patch.patch_name }}
+        </option>
+      </select>
 
-        <button mat-button>Load</button>
-      </form>
-    </div>
+      <button mat-button>Load</button>
+    </form>
   </div>
 </div>

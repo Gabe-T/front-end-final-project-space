@@ -13,6 +13,11 @@ p {
   backdrop-filter: blur(2px);
   justify-content: space-around;
   /* flex-wrap: wrap; */
+  overflow: auto;
+}
+
+.transport-button {
+  height: 100%;
 }
 
 .switches {
@@ -41,6 +46,7 @@ mat-slider {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+  border-radius: 10px;
   text-align: center;
 }
 
@@ -49,13 +55,33 @@ mat-slider {
   flex-direction: row;
   padding-top: 20px;
 }
+
+.Osc1 {
+  flex: 1;
+}
+
 .Osc2 {
+  flex: 1;
 }
 
 .Osc3 {
+  flex: 1;
 }
 
-.switches-noise {
+.wind {
+  flex: 2;
+}
+
+.fx {
+  flex: 2;
+}
+
+.main-out {
+  flex: 2;
+}
+
+.patch-memory {
+  flex: 2;
 }
 
 .form-1 {
@@ -69,6 +95,7 @@ button {
 .patch-memory {
   display: flex;
   flex-direction: column;
+  flex: 2;
 }
 .master {
   align-items: center;
@@ -76,6 +103,7 @@ button {
 @media only screen and (max-width: 1100px) {
   .synth-container {
     flex-wrap: wrap;
+    max-height: 50%;
   }
 
   .row-1 {
@@ -83,8 +111,5 @@ button {
   }
   .row-2 {
     width: auto;
-  }
-  .patch-memory {
-    flex-direction: row;
   }
 }

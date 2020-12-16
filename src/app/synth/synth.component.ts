@@ -123,7 +123,7 @@ export class SynthComponent implements OnInit {
     this.amp3 = new Tone.Gain(0.5);
     this.amp4 = new Tone.Gain(0.5);
     this.amp5 = new Tone.Gain(0);
-    this.comp = new Tone.Compressor(-20, 4);
+    this.comp = new Tone.Compressor(-20, 2);
     this.mixer = new Tone.Gain(0.8);
     this.delay = new Tone.PingPongDelay({
       wet: this.sliderDelayLevelValue,
@@ -197,7 +197,7 @@ export class SynthComponent implements OnInit {
       }
 
       if (this.counter % 4 === 0)
-        this.kick.triggerAttackRelease('c1', '16n', time, 1);
+        this.kick.triggerAttackRelease('c1', '8n', time, 1);
     };
 
     this.loop1 = new Tone.Loop(song, '16n');

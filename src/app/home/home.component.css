@@ -5,6 +5,7 @@
   height: 100%;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 /* .globe-logo {
@@ -213,6 +214,9 @@
   .nasa-overlay-img {
     height: 100%;
   }
+  .image-container {
+    max-height: 100%;
+  }
 
   .text {
     width: 95vw;
@@ -240,10 +244,20 @@
   }
 }
 
+@media only screen and (max-width: 618px) {
+  .panel {
+    max-height: 50%;
+    overflow: auto;
+  }
+}
+
 @media only screen and (max-width: 575px) {
   .image-container {
-    overflow: auto;
     max-height: 100%;
+  }
+
+  .panel-header {
+    position: sticky;
   }
 
   .nasa-overlay-img {
