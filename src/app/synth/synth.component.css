@@ -105,11 +105,19 @@ button {
     flex-wrap: wrap;
     max-height: 50%;
   }
-
+  .patch-memory {
+    flex-direction: row;
+  }
   .row-1 {
     width: auto;
   }
   .row-2 {
     width: auto;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .patch-memory {
+    flex-direction: row;
   }
 }

@@ -1,77 +1,83 @@
-<div class="image-container">
-  <div class="header">
-    <div class="nav-button">
-      <button mat-button class="random-button" (click)="backOneDay(apod.date)">
-        <i class="fas fa-angle-double-left nav-icon"></i>Back One Day
-      </button>
+<body>
+  <div class="main-container">
+    <div class="header">
+      <div class="nav-button">
+        <button
+          mat-button
+          class="random-button"
+          (click)="backOneDay(apod.date)"
+        >
+          <i class="fas fa-angle-double-left nav-icon"></i>Back One Day
+        </button>
+      </div>
+      <div class="nav-button">
+        <button mat-button class="random-button" (click)="getRandomApod()">
+          Random Date
+        </button>
+        <i class="fas fa-random nav-icon" (click)="getRandomApod()"></i>
+      </div>
+      <div class="nav-button">
+        <button mat-button class="random-button" (click)="backHome()">
+          Today
+        </button>
+        <i class="fas fa-user-astronaut nav-icon" (click)="backHome()"></i>
+      </div>
+      <div class="nav-button">
+        <button
+          mat-button
+          class="random-button"
+          (click)="forwardOneDay(apod.date)"
+        >
+          Next Day
+          <i class="fas fa-angle-double-right nav-icon"></i>
+        </button>
+      </div>
     </div>
-    <div class="nav-button">
-      <button mat-button class="random-button" (click)="getRandomApod()">
-        Random Date
-      </button>
-      <i class="fas fa-random nav-icon" (click)="getRandomApod()"></i>
-    </div>
-    <div class="nav-button">
-      <button mat-button class="random-button" (click)="backHome()">
-        Today
-      </button>
-      <i class="fas fa-user-astronaut nav-icon" (click)="backHome()"></i>
-    </div>
-    <div class="nav-button">
-      <button
-        mat-button
-        class="random-button"
-        (click)="forwardOneDay(apod.date)"
-      >
-        Next Day
-        <i class="fas fa-angle-double-right nav-icon"></i>
-      </button>
-    </div>
-  </div>
-  <div class="image-container">
-    <img class="nasa-img" src="{{ apod?.hdurl }}" alt="nasa pic of the day" />
-    <img
-      class="nasa-overlay-img"
-      src="{{ apod?.url }}"
-      alt="nasa pic of the day"
-    />
+    <div class="image-container">
+      <img class="nasa-img" src="{{ apod?.hdurl }}" alt="nasa pic of the day" />
+      <img
+        class="nasa-overlay-img"
+        src="{{ apod?.url }}"
+        alt="nasa pic of the day"
+      />
 
-    <div
-      [@fadeinandout]="fade ? 'in' : 'out'"
-      class="text"
-      [ngClass]="{
-        pos1: random === 1,
-        pos2: random === 2,
-        pos3: random === 3,
-        pos4: random === 4,
-        pos5: random === 5,
-        pos6: random === 6,
-        pos7: random === 7,
-        pos8: random === 8,
-        pos9: random === 9,
-        pos10: random === 10,
-        pos11: random === 11
-      }"
-    >
-      <p [ngClass]="{ hide: counter > 0 }" class="title-text">
-        {{ apod?.title }}
-      </p>
-      <p [ngClass]="{ hide: counter > 0 }" class="title-text">
-        {{ apod?.date }}
-      </p>
-      <p>{{ currentSentence }}</p>
+      <div
+        [@fadeinandout]="fade ? 'in' : 'out'"
+        class="text"
+        [ngClass]="{
+          pos1: random === 1,
+          pos2: random === 2,
+          pos3: random === 3,
+          pos4: random === 4,
+          pos5: random === 5,
+          pos6: random === 6,
+          pos7: random === 7,
+          pos8: random === 8,
+          pos9: random === 9,
+          pos10: random === 10,
+          pos11: random === 11
+        }"
+      >
+        <p [ngClass]="{ hide: counter > 0 }" class="title-text">
+          {{ apod?.title }}
+        </p>
+        <p [ngClass]="{ hide: counter > 0 }" class="title-text">
+          {{ apod?.date }}
+        </p>
+        <p>{{ currentSentence }}</p>
+      </div>
     </div>
+    <mat-accordion> </mat-accordion>
+    <mat-expansion-panel class="panel">
+      <mat-expansion-panel-header class="panel-header">
+        <mat-panel-title>
+          <img class="nasynth-text" src="./assets/nasa-white.png" alt="" />
+        </mat-panel-title>
+        <mat-panel-description>
+          <button mat-button (click)="openDialog()">About</button>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-synth></app-synth>
+    </mat-expansion-panel>
   </div>
-  <mat-accordion> </mat-accordion>
-  <mat-expansion-panel class="panel">
-    <mat-expansion-panel-header class="panel-header">
-      <mat-panel-title>
-        <img class="nasynth-text" src="./assets/nasa-white.png" alt="" />
-      </mat-panel-title>
-      <mat-panel-description>
-        <button mat-button (click)="openDialog()">About</button>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <app-synth></app-synth>
-  </mat-expansion-panel>
-</div>
+</body>
