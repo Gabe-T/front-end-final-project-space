@@ -184,6 +184,11 @@
 }
 
 @media only screen and (max-width: 1080px) {
+  .image-container {
+    overflow: auto;
+    max-height: 100%;
+  }
+
   .nasa-overlay-img {
     height: 100%;
   }
