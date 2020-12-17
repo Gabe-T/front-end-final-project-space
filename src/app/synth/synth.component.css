@@ -56,16 +56,20 @@ mat-slider {
   padding-top: 20px;
 }
 
+.transport .s-col {
+  flex: 2;
+}
+
 .Osc1 {
-  flex: 1;
+  flex: 2;
 }
 
 .Osc2 {
-  flex: 1;
+  flex: 2;
 }
 
 .Osc3 {
-  flex: 1;
+  flex: 2;
 }
 
 .wind {

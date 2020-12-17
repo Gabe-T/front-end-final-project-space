@@ -22,6 +22,10 @@ mat-dialog-container {
 .globe-logo {
   height: 125px;
 }
+.link {
+  text-decoration: none;
+  color: aquamarine;
+}
 
 @media only screen and (max-width: 1080px) {
   body {
