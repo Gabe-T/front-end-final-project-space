@@ -29,9 +29,9 @@ body {
   align-content: stretch;
   align-items: center;
   top: 0;
+  padding-top: 10px;
   justify-content: space-around;
-  color: rgba(255, 255, 255, 0.15);
-
+  color: rgba(255, 255, 255, 0.37);
   transition: 1s all;
 }
 
@@ -113,6 +113,10 @@ body {
 
 .panel:hover {
   background-color: rgba(0, 0, 0, 0.507);
+}
+
+.about-button {
+  font-size: 18px;
 }
 
 .hide {
@@ -202,7 +206,9 @@ body {
     overflow: auto;
     max-height: 100%;
   }
-
+  .about-button {
+    font-size: 14px;
+  }
   .nasa-overlay-img {
     height: 100%;
   }
@@ -215,6 +221,7 @@ body {
   }
 
   .header {
+    padding-top: 0;
     width: 100%;
   }
 

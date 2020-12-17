@@ -236,26 +236,9 @@
       </p>
     </div>
   </div>
-  <div class="switches-noise s-col">
+  <div class="wind s-col">
     <div>
       <p>Wind</p>
-      <mat-slider
-        (input)="getAmp4Slider($event.value)"
-        [value]="sliderNoiseLevelValue"
-        min=".01"
-        max=".5"
-        step=".01"
-        thumbLabel
-      ></mat-slider>
-      <p
-        matTooltip="Affects gain of Wind Oscillator"
-        matTooltipPosition="above"
-        [matTooltipShowDelay]="250"
-      >
-        level
-      </p>
-    </div>
-    <div>
       <mat-slider
         (input)="getNoiseFilterSlider($event.value)"
         [value]="sliderNoiseFilterValue"
@@ -270,6 +253,23 @@
         [matTooltipShowDelay]="250"
       >
         filter
+      </p>
+    </div>
+    <div>
+      <mat-slider
+        (input)="getAmp4Slider($event.value)"
+        [value]="sliderNoiseLevelValue"
+        min=".01"
+        max=".5"
+        step=".01"
+        thumbLabel
+      ></mat-slider>
+      <p
+        matTooltip="Affects gain of Wind Oscillator"
+        matTooltipPosition="above"
+        [matTooltipShowDelay]="250"
+      >
+        level
       </p>
     </div>
     <div>
