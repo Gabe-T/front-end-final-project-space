@@ -378,7 +378,7 @@ export class SynthComponent implements OnInit {
     this.getPatches();
   }
 
-  //----------------------Patch saving and loading-------------------
+  //----------------------Patch saving and loading/Form-------------------
   getPatches = () => {
     this.patchService.getPatches().subscribe((response) => {
       this.patches = response;
