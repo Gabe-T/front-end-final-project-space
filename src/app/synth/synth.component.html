@@ -403,9 +403,11 @@
       <label for="name">Save a Patch</label>
       <input name="name" id="name" placeholder="Patch Name" ngModel required/>
       <button [disabled]="patchform.invalid" mat-button>Save</button>
+
     </form>
 
     <form
+      required
       #patchLoadForm="ngForm"
       (ngSubmit)="loadPatch(patchLoadForm.value.id)"
       class="form-1"

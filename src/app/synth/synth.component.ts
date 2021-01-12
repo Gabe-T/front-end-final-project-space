@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AMSynth, OmniOscillator, Player } from 'tone';
-//import { Tone } from 'tone/build/esm/core/Tone';
 import * as Tone from 'tone';
 import * as Tonal from '@tonaljs/tonal';
-// import * as p5 from 'p5';
-// import * as dat from 'dat.gui';
-import { StereoFeedbackEffect } from 'tone/build/esm/effect/StereoFeedbackEffect';
 import { PatchService } from '../patch.service';
 import { NgForm } from '@angular/forms';
 
@@ -15,8 +10,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./synth.component.css'],
 })
 export class SynthComponent implements OnInit {
-  p5;
-  gui;
   //--------Signal Generators--------//
   synth1: any;
   synth2: any;
@@ -72,10 +65,11 @@ export class SynthComponent implements OnInit {
   //NOISE
   sliderNoiseLevelValue: number = 0.3;
   sliderNoiseFilterValue: number = 60;
-  //FX //OTHER
+  //FX
   sliderReverbLevelValue: number = 0.01;
   sliderDelayLevelValue: number = 0.75;
   sliderDelayTimeValue: number = 0.3333;
+  comp: any;
   sliderMasterVolumeValue: number = -12;
   sliderMasterFilterValue: number = 12000;
   sliderKickVolValue: number = 0;
@@ -84,11 +78,10 @@ export class SynthComponent implements OnInit {
   key1: any;
   flavor: string;
   wave1: any;
-  comp: any;
   patches: any;
 
   constructor(private patchService: PatchService) {
-    //const gui = new dat.GUI();
+    //----------------------Tonal Scales----------------------
     this.key1 = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
     this.scale1 = Tonal.Scale.get('C1' + ' major').notes;
@@ -102,8 +95,8 @@ export class SynthComponent implements OnInit {
     this.scale3 = this.scale3.concat(Tonal.Scale.get('C5' + ' major').notes);
 
     Tone.Transport.bpm.value = this.bpmSliderValue;
-    //this.noteOsc1 = this.scale1[this.sliderOsc1PitchValue];
 
+    //----------------------Signal Generators----------------------
     this.synth1 = new Tone.Oscillator('C1', 'sawtooth');
     this.synth2 = new Tone.Synth();
     this.synth3 = new Tone.Synth({
@@ -151,10 +144,7 @@ export class SynthComponent implements OnInit {
     this.masterFilter = new Tone.Filter(this.sliderMasterFilterValue);
     this.vol = new Tone.Volume(this.sliderMasterVolumeValue);
 
-    this.counter = 0;
-
-    //MIX BUSS
-    //consider using chains!!
+    //----------------------MIX/OUTPUT BUSS----------------------
     this.synth1.connect(this.amp1);
     this.amp1.connect(this.autofilter);
     this.autofilter.connect(this.mixer);
@@ -181,7 +171,8 @@ export class SynthComponent implements OnInit {
     this.vol.connect(this.comp);
     this.comp.toDestination();
 
-    //Loop Function
+    //----------------------Loop Function for OSC1/OSC2----------------------
+    this.counter = 0;
     const song = (time) => {
       this.counter = this.counter + 1;
 
@@ -203,6 +194,7 @@ export class SynthComponent implements OnInit {
     this.loop1 = new Tone.Loop(song, '16n');
   }
 
+  //----------------------UI Functions----------------------
   getOscSlider(value: number) {
     this.sliderOsc1PitchValue = value;
     this.synth1.frequency.value = this.scale1[value];
@@ -269,10 +261,8 @@ export class SynthComponent implements OnInit {
 
   getOsc2ADSwitch() {
     if (this.switchOsc2ADValue === true) {
-      // this.switchOsc2ADValue = false;
       this.synth2.envelope.attack = 0.001;
     } else {
-      // this.switchOsc2ADValue = true;
       this.synth2.envelope.attack = 0.2;
       this.synth2.envelope.decay = 1;
     }
@@ -291,10 +281,8 @@ export class SynthComponent implements OnInit {
 
   getOsc2TypeSwitch() {
     if (this.switchOsc2TypeValue === true) {
-      // this.switchOsc2TypeValue = false;
       this.synth2.oscillator.type = 'sine';
     } else {
-      // this.switchOsc2TypeValue = true;
       this.synth2.oscillator.type = 'triangle';
     }
   }
@@ -311,10 +299,8 @@ export class SynthComponent implements OnInit {
 
   getOsc3TypeSwitch() {
     if (this.switchOsc3TypeValue === true) {
-      // this.switchOsc3TypeValue = false;
       this.synth3.oscillator.type = 'sawtooth';
     } else {
-      // this.switchOsc3TypeValue = true;
       this.synth3.oscillator.type = 'sine';
     }
   }
@@ -331,10 +317,8 @@ export class SynthComponent implements OnInit {
 
   getOsc3ADSwitch() {
     if (this.switchOsc3ADValue === true) {
-      // this.switchOsc3ADValue = false;
       this.synth3.envelope.attack = 0.001;
     } else {
-      // this.switchOsc3ADValue = true;
       this.synth3.envelope.attack = 0.2;
       this.synth3.envelope.decay = 1;
     }
@@ -377,11 +361,6 @@ export class SynthComponent implements OnInit {
     this.loop1.start();
     Tonal.Collection.shuffle(this.scale2);
     Tonal.Collection.shuffle(this.scale3);
-    // //P5-------------------------
-    // setTimeout(() => {
-    //   this.wave1.getValue();
-    // }, 7000);
-    // //P5---------------------------------------
   }
 
   stop() {
@@ -389,7 +368,6 @@ export class SynthComponent implements OnInit {
     this.synth1.stop();
     this.noise.stop();
     this.loop1.stop();
-    //this.vol.mute = true;
     console.log('transport/osc1/noise stopped');
   }
 
@@ -400,6 +378,7 @@ export class SynthComponent implements OnInit {
     this.getPatches();
   }
 
+  //----------------------Patch saving and loading/Form-------------------
   getPatches = () => {
     this.patchService.getPatches().subscribe((response) => {
       this.patches = response;
@@ -472,30 +451,3 @@ export class SynthComponent implements OnInit {
     this.getMasterFilterSlider(found.master_filter_value);
   };
 }
-//ideas
-//1. ramp up the gain with play() from 0 to smoothly bring in sounds of oscillators and sequences
-//2.
-
-// setTimeout(() => {
-//   this.createCanvas();
-// }, 3000);
-//p5-----------------------------------------------------
-
-// osc1Wave(p: any) {
-//   p.setup = () => {
-//     p.createCanvas(125, 60).parent('osc1-canvas');
-//     p.background(0);
-//     p.stroke(255);
-//   };
-//   p.draw = () => {
-//     let buffer = this.wave1.getValue();
-//     for (let i = 0; i < buffer.length; i++) {
-//       let x1 = p.map(i - 1, 0, buffer.length, 0, p.width);
-//       let y1 = p.map(buffer[i - 1], -1, 1, 0, p.height);
-//       let x2 = p.map(i, 0, buffer.length, 0, p.width);
-//       let y2 = p.map(buffer[i], -1, 1, 0, p.height);
-//       p.line(x1, y1, x2, y2);
-//     }
-//   };
-// }
-//----------------------------------------------------------
